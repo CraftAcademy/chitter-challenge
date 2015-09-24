@@ -39,6 +39,20 @@ class Chitter < Sinatra::Base
     erb :dashboard
   end
 
+  get '/sign_in' do
+    erb :sign_in
+  end
+
+  post '/sign_in' do
+    if
+      @user = User.authenticate(params[:username], params[:password])
+      session[:user_id] = @user.id
+      redirect '/dashboard'
+    else
+      redirect 'sign_in'
+    end
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
