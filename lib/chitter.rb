@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'data_mapper'
 require 'dm-migrations'
 require 'bcrypt'
+require './lib/user'
+
 
 class Chitter < Sinatra::Base
   set :views, proc {File.join(root, '..', 'views')}
@@ -21,6 +23,20 @@ class Chitter < Sinatra::Base
 
   get '/sign_up' do
     erb :sign_up
+  end
+
+  post '/sign_up' do
+    begin
+      @user = User.create(:username => params[:username], :password => @params[:password], :password_confirmation => params[:password_confirmation], :name => params[:name], :email => params[:email],)
+      session[:user_id] = @user.id
+      redirect '/dashboard'
+    rescue
+      redirect 'sign_up'
+    end
+  end
+
+  get '/dashboard' do
+    erb :dashboard
   end
 
   # start the server if ruby file executed directly
