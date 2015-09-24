@@ -53,6 +53,11 @@ class Chitter < Sinatra::Base
     end
   end
 
+  get '/sign_out' do
+    session[:user_id] = nil
+    redirect '/'
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
