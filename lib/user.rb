@@ -12,6 +12,8 @@ class User
   property :email, String
   property :password_digest, Text
 
+  has n, :peeps
+
   validates_presence_of :username, message: "Please fill in username."
   validates_uniqueness_of :username , message: "Username already exists."
   validates_presence_of :name, message: "Please fill in name."

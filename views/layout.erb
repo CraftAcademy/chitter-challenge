@@ -27,14 +27,22 @@
       </ul>
     <%else%>
       <ul class="right">
+
         <li class="active"><a href="/sign_out">Sign Out</a></li>
       </ul>
     <%end%>
 
     <!-- Left Nav Section -->
+  <%if session[:user_id] == nil %>
     <ul class="left">
       <li><a href="/send_peep">Send Peep</a></li>
     </ul>
+  <%else%>
+    <ul class="left">
+      <li><a href="/send_peep">Send Peep</a></li>
+      <li><a href="/send_peep">My Peeps</a></li>
+    </ul>
+  <%end%>
   </section>
 </nav>
 
