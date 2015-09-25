@@ -24,7 +24,7 @@ feature 'user sign in' do
       fill_in 'username', :with => 'username'
       fill_in 'password', :with => 'password'
       click_button 'Sign in'
-      expect(page.current_path).to eq '/dashboard'
+      expect(page.current_path).to eq '/'
       expect(page.status_code).to eq 200
     end
 

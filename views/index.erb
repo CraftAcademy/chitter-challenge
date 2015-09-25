@@ -1,6 +1,6 @@
 <main>
 <div>
-<% @peeps.each do |peep| %>
+<% @peeps.reverse_each do |peep| %>
    <small>Peep Message:</small>
    <br><%= peep[:message]%></p>
   <p>

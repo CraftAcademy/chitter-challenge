@@ -18,6 +18,15 @@ class Chitter < Sinatra::Base
   DataMapper.auto_upgrade!
   DataMapper::Model.raise_on_save_failure = true
 
+  before do
+    @user = User.get(session[:user_id]) unless is_user?
+    @user = User.get(session[:username]) unless is_user?
+  end
+
+  def is_user?
+    @user != nil
+  end
+
   get '/' do
     @peeps = Peep.all
     erb :index
@@ -31,6 +40,7 @@ class Chitter < Sinatra::Base
     begin
       @user = User.create(:username => params[:username], :password => @params[:password], :password_confirmation => params[:password_confirmation], :name => params[:name], :email => params[:email],)
       session[:user_id] = @user.id
+      session[:username] = @user.username
       redirect '/dashboard'
     rescue
       redirect 'sign_up'
@@ -49,7 +59,8 @@ class Chitter < Sinatra::Base
     if
       @user = User.authenticate(params[:username], params[:password])
       session[:user_id] = @user.id
-      redirect '/dashboard'
+      session[:username] = @user.username
+      redirect '/'
     else
       redirect 'sign_in'
     end
