@@ -8,7 +8,7 @@ gem 'data_mapper'
 gem 'sinatra-formhelpers-ng'
 gem 'bcrypt'
 gem 'cucumber'
-gem 'byebug'
+
 
 group :test do
   gem 'rspec'
@@ -26,5 +26,6 @@ group :test do
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'shotgun'
+  gem 'byebug'
 end
 
