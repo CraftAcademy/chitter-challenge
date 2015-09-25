@@ -6,7 +6,7 @@ feature 'application setup' do
       expect(page.status_code).to be 200
     end
 
-        scenario 'it has a chitter button' do
+    scenario 'it has a chitter button' do
       visit '/'
       expect(page).to have_content 'Chitter'
     end

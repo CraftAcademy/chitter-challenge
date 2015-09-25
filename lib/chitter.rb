@@ -3,6 +3,7 @@ require 'data_mapper'
 require 'dm-migrations'
 require 'bcrypt'
 require './lib/user'
+require './lib/peep'
 
 
 class Chitter < Sinatra::Base
@@ -18,6 +19,7 @@ class Chitter < Sinatra::Base
   DataMapper::Model.raise_on_save_failure = true
 
   get '/' do
+    @peeps = Peep.all
     erb :index
   end
 
@@ -55,6 +57,22 @@ class Chitter < Sinatra::Base
 
   get '/sign_out' do
     session[:user_id] = nil
+    redirect '/'
+  end
+
+  get '/send_peep' do
+    if session[:user_id] == nil
+      redirect '/sign_in'
+    else
+      erb :send_peep
+    end
+  end
+
+  post '/send_peep' do
+    @title = params[:title]
+    @description = params[:description]
+    @url = params[:url]
+    @peep = Peep.create(:message => params[:message], :created_at => Time.now, :created_by => session[:username])
     redirect '/'
   end
 

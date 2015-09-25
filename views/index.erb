@@ -1,5 +1,13 @@
 <main>
-  <div>
-    <p>Welcome to chitter!</p>
-  </div>
+<div>
+<% @peeps.each do |peep| %>
+   <small>Peep Message:</small>
+   <br><%= peep[:message]%></p>
+  <p>
+    <small>
+      Created: <%= peep[:created_at]%> by: <%= peep[:created_by]%>
+    </small>
+    </p>
+<%end%>
+</div>
 </main>
