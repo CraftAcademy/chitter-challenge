@@ -5,7 +5,8 @@
    <br><%= peep[:message]%></p>
   <p>
     <small>
-      Created: <%= peep[:created_at]%> by: <%= peep[:created_by]%>
+      Created: <%= peep[:created_at]%> by: <%= peep[:created_by_name]%><br>
+      <i>username: <%= peep[:created_by]%></i>
     </small>
     </p>
 <%end%>

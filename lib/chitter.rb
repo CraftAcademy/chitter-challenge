@@ -20,7 +20,6 @@ class Chitter < Sinatra::Base
 
   before do
     @user = User.get(session[:user_id]) unless is_user?
-    @user = User.get(session[:username]) unless is_user?
   end
 
   def is_user?
@@ -38,17 +37,12 @@ class Chitter < Sinatra::Base
 
   post '/sign_up' do
     begin
-      @user = User.create(:username => params[:username], :password => @params[:password], :password_confirmation => params[:password_confirmation], :name => params[:name], :email => params[:email],)
+      @user = User.create(:username => params[:username], :password => params[:password], :password_confirmation => params[:password_confirmation], :name => params[:name], :email => params[:email],)
       session[:user_id] = @user.id
-      session[:username] = @user.username
-      redirect '/dashboard'
+      redirect '/'
     rescue
       redirect 'sign_up'
     end
-  end
-
-  get '/dashboard' do
-    erb :dashboard
   end
 
   get '/sign_in' do
@@ -59,7 +53,6 @@ class Chitter < Sinatra::Base
     if
       @user = User.authenticate(params[:username], params[:password])
       session[:user_id] = @user.id
-      session[:username] = @user.username
       redirect '/'
     else
       redirect 'sign_in'
@@ -80,10 +73,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/send_peep' do
-    @title = params[:title]
-    @description = params[:description]
-    @url = params[:url]
-    @peep = Peep.create(:message => params[:message], :created_at => Time.now, :created_by => session[:username])
+    Peep.create(:message => params[:message], :created_at => Time.now, :created_by => @user.username, :created_by_name => @user.name )
     redirect '/'
   end
 

@@ -31,7 +31,7 @@ feature 'user sign up' do
       fill_in 'email', :with => 'email'
       click_button 'Sign Up'
       expect(User.count).to eq 1
-      expect(page.current_path).to eq '/dashboard'
+      expect(page.current_path).to eq '/'
       expect(page.status_code).to eq 200
     end
 

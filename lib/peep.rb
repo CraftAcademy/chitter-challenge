@@ -6,5 +6,6 @@ class Peep
   property :message, Text
   property :created_at, DateTime
   property :created_by, String
+  property :created_by_name, String
 
 end
