@@ -12,6 +12,18 @@ require 'simplecov'
 require 'dm-rspec'
 require 'database_cleaner'
 
+def create_and_login_user
+  User.create(username: 'username', password: 'password', password_confirmation: 'password',name: 'name', email: 'email')
+  visit '/sign_in'
+  fill_in 'username', :with => 'username'
+  fill_in 'password', :with => 'password'
+  click_button 'Sign in'
+end
+
+def create_user
+  User.create(username: 'username', password: 'password', password_confirmation: 'password',name: 'name', email: 'email')
+end
+
 SimpleCov.formatters = [
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter

@@ -1,6 +1,6 @@
 feature 'user sign in' do
 
-  before {visit '/'}
+  background {visit '/'}
 
     scenario 'click on button sign in route to /sign_in page' do
       click_on 'Sign In'
@@ -19,21 +19,23 @@ feature 'user sign in' do
     end
 
     scenario 'user can sign in' do
+      create_user
       visit '/sign_in'
-      User.create(username: 'username', password: 'password', password_confirmation: 'password',name: 'name', email: 'email')
       fill_in 'username', :with => 'username'
       fill_in 'password', :with => 'password'
       click_button 'Sign in'
       expect(page.current_path).to eq '/'
       expect(page.status_code).to eq 200
+      expect(page).to have_content 'Signed in as: username'
     end
 
     scenario 'user cant sign in if password doesnt match' do
-      User.create(username: 'username', password: 'password', password_confirmation: 'password',name: 'name', email: 'email')
+      create_user
       visit '/sign_in'
       fill_in 'username', :with => 'usernamer'
       fill_in 'password', :with => 'password_wrong'
       click_button 'Sign in'
       expect(page.current_path).to eq '/sign_in'
+      expect(page).not_to have_content 'Signed in as: username'
     end
 end
