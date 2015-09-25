@@ -43,15 +43,42 @@ I want to see the time at which it was made
 * Visitors to OhChit do not have to be logged in to see the stream of Chits.
 * Users can only Chit if they are logged in.
 
+#Notes on test coverage
+
+Please ensure you have the following **AT THE TOP** of your spec_helper.rb in order to have test coverage stats generated on your pull request:
+
+```ruby
+require 'coveralls'
+require 'simplecov'
+
+SimpleCov.formatters = [
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
+Coveralls.wear! 
+```
+
+Note that you can replace `Coveralls.wear!` with  `SimpleCov.start` to get coverage stats locally
+Then run `open coverage/index.html` from the command line to view details
+
 
 #TODO
 * Update this README to indicate the technologies used and give instructions on how to install and run the tests.
 * Submit a pull request before Monday at 9am with your solution or partial solution.
 
+Please ensure you have the following **AT THE TOP** of your spec_helper.rb in order to have test coverage stats generated
 #Bonus User Story
 
+```ruby
 In order to start a conversation as a Chitter I want to reply to a Chit from another Chitter.
+require 'simplecov'
 
+SimpleCov.formatters = [
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
 #Bonus CSS
+```
 
+Note that you can replace `Coveralls.wear!` with  `SimpleCov.start` to get coverage stats locally
 Polish this Chit and make it beautiful!

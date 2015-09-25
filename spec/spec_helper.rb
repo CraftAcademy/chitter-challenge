@@ -18,6 +18,9 @@ SimpleCov.formatters = [
     Coveralls::SimpleCov::Formatter
 ]
 Coveralls.wear!
+# Can replace `Coveralls.wear!` with  `SimpleCov.start` to get coverage stats locally.
+# Then run `$ open coverage/index.html` from the command line to view details.
+# SimpleCov.start
 
 def app
   App
