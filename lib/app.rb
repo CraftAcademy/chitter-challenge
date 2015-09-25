@@ -18,9 +18,14 @@ class App < Sinatra::Base
   DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/bookmark_web_#{env}")
 
   get '/' do
-
+    @peeps = Peep.all(order: [ :created_at.desc ])
     erb :index
 
+  end
+
+  get '/peeps' do
+    @peeps = Peep.all(order: [ :created_at.desc ])
+    erb :'peeps/index'
   end
 
 end

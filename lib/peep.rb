@@ -13,5 +13,4 @@ class Peep
   validates_presence_of :name
   validates_presence_of :user_name
 
-end
-
+  end
