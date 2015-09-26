@@ -8,7 +8,7 @@ Chitter Challenge
 Challenge:
 -------
 
-As usual please start by 
+As usual please start by
 
 * Filling out your learning plan self review for the week: https://github.com/MakersSweden/learning_plan_september2015 (if you haven't already)
 * Forking this repo
@@ -32,11 +32,11 @@ So that I can avoid others posting messages on Chitter as me
 I want to log out of Chitter
 
 As a maker
-So that I can let people know what I am doing  
+So that I can let people know what I am doing
 I want to post a message (peep) to chitter
 
 As a maker
-So that I can see what others are saying  
+So that I can see what others are saying
 I want to see all peeps in reverse chronological order
 
 As a maker
@@ -48,15 +48,18 @@ Notes on functionality:
 ------
 
 * Drive the creation of your app using tests - either cucumber or rspec as you prefer
-* Makers sign up to chitter with their email, password, name and a user name (e.g. sam@makersacademy.com, s3cr3t, Samuel Russell Hampden Joseph, tansaku).
+* Makers sign up to chitter with their email, password, name and a user name (e.g. sam@makersacademy.com,
+s3cr3t, Samuel Russell Hampden Joseph, tansaku).
 * The username and email are unique.
 * Peeps (posts to chitter) have the name of the maker and their user handle.
 * Use bcrypt to secure the passwords.
 * Use data mapper and postgres to save the data.
 * You don't have to be logged in to see the peeps.
 * You only can peep if you are logged in.
-* Please ensure that you update your README to indicate the technologies used, and give instructions on how to install and run the tests
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* Please ensure that you update your README to indicate the technologies used, and give instructions on
+how to install and run the tests
+* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or
+little amount of code you wrote please please please submit a pull request before Monday at 9am
 
 Bonus:
 -----

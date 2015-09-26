@@ -1,12 +1,11 @@
 
 require 'sinatra/base'
 #require 'byebug'
-# require 'pry'
 require 'tilt/erb'
 require 'data_mapper'
 require 'dm-migrations'
-require './lib/peep.rb'
-
+require './lib/peep'
+require './lib/users'
 
 class App < Sinatra::Base
 
@@ -14,8 +13,11 @@ class App < Sinatra::Base
   enable :sessions
   set :session_secret, '123321123'
   use Rack::Session::Pool
-  env = ENV['RACK_ENV'] || "development"
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/bookmark_web_#{env}")
+  env = ENV['RACK_ENV'] || "dev"
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/chitter_web_#{env}")
+
+  DataMapper.finalize
+  DataMapper.auto_upgrade!
 
   get '/' do
     @peeps = Peep.all(order: [ :created_at.desc ])
@@ -28,5 +30,9 @@ class App < Sinatra::Base
     erb :'peeps/index'
   end
 
+
+  get '/users/new_user' do
+    erb :'users/new_user'
+  end
 end
 
