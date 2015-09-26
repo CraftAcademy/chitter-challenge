@@ -35,10 +35,10 @@ I want to see the time at which it was made
 #Other Requirements
 
 * Use BDD and TDD.
-* Registered Users sign up to OhChit with email, password, name, and Registered user name.
+* Registered Users sign up to OhChit with email, password, name, and user name.
 * Email and Registered user name must be unique.
 * Chits (posts to OhChit) show the OhChit's registered user name and when he or she created the Chit.
-* Paswords are secured with bcrypt.
+* Passwords are secured with bcrypt.
 * DataMapper and PostgreSQL are used to persist data.
 * Visitors to OhChit do not have to be logged in to see the stream of Chits.
 * Registered Users can only Chit if they are logged in.
@@ -60,7 +60,6 @@ Coveralls.wear!
 
 Note that you can replace `Coveralls.wear!` with  `SimpleCov.start` to get coverage stats locally
 Then run `open coverage/index.html` from the command line to view details
-
 
 #TODO
 
