@@ -1,47 +1,47 @@
 #About
 
 * Weekend Challenge No. 4 for ["Maker's Academy Sweden."](http://www.makersacademy.se)
-* "Completed" by one novice full-stack developer in one weekend. 
+* "Completed" by one novice full-stack developer in one weekend.
 * See the finished product live on the web at [www.ohchit.herokuapp.com](https://ohchit.herokuapp.com/) (work in progress!).
 
 #User Stories
 
 ```
-As a Maker
-So that I can post messages on Chitter as me
-I want to sign up for Chitter
+As a Registered User
+So that I can post messages on OhChit as me
+I want to sign up for OhChit
 
-As a Maker
-So that I can post messages on Chitter as me
-I want to log in to Chitter
+As a Registered User
+So that I can post messages on OhChit as me
+I want to sign in to OhChit
 
-As a Maker
-So that I can avoid others posting messages on Chitter as me
-I want to log out of Chitter
+As a Registered User
+So that I can avoid others posting messages on OhChit as me
+I want to sign out of OhChit
 
-As a maker
-So that I can let people know what I am doing  
-I want to post a message (peep) to chitter
+As a Registered User
+So that I can let people know what I am doing
+I want to post a message (chit) to OhChit
 
-As a maker
-So that I can see what others are saying  
-I want to see all peeps in reverse chronological order
+As a Registered User
+So that I can see what others are saying
+I want to see all chits in reverse chronological order
 
-As a maker
-So that I can better appreciate the context of a peep
+As a Registered User
+So that I can better appreciate the context of a chit
 I want to see the time at which it was made
 ```
 
 #Other Requirements
 
-* Use BDD and TDD. 
-* Users sign up to OhChit with email, password, name, and user name.
-* Email and user name must be unique.
-* Chits (posts to OhChit) show the Chitter's user name and when he or she created the Chit.
+* Use BDD and TDD.
+* Registered Users sign up to OhChit with email, password, name, and Registered user name.
+* Email and Registered user name must be unique.
+* Chits (posts to OhChit) show the OhChit's registered user name and when he or she created the Chit.
 * Paswords are secured with bcrypt.
 * DataMapper and PostgreSQL are used to persist data.
 * Visitors to OhChit do not have to be logged in to see the stream of Chits.
-* Users can only Chit if they are logged in.
+* Registered Users can only Chit if they are logged in.
 
 #Notes on Test Coverage Reporting
 
@@ -55,7 +55,7 @@ SimpleCov.formatters = [
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
 ]
-Coveralls.wear! 
+Coveralls.wear!
 ```
 
 Note that you can replace `Coveralls.wear!` with  `SimpleCov.start` to get coverage stats locally
@@ -63,14 +63,17 @@ Then run `open coverage/index.html` from the command line to view details
 
 
 #TODO
-* Update this README to indicate the technologies used and give instructions on how to install and run the tests.
-* Submit a pull request before Monday at 9am with your solution or partial solution.
 
-#Bonus User Story
+Update this README to indicate the technologies used and give instructions on how to install and run the tests.
 
-In order to start a conversation as a Chitter I want to reply to a Chit from another Chitter.
+#Bonus Registered User Story
+
+```
+As a Registered User
+In order to start a conversation on OhChit
+I want to reply to a Chit from another OhChit.
+```
 
 #Bonus CSS
 
-Note that you can replace `Coveralls.wear!` with  `SimpleCov.start` to get coverage stats locally
-Polish this Chit and make it beautiful!
+Polish this Chit and make it beautiful.
