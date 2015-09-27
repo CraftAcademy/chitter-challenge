@@ -64,12 +64,14 @@ Then run `open coverage/index.html` from the command line to view details.
 #Key Technologies Used
 
 * [BCrypt](https://en.wikipedia.org/wiki/Bcrypt)
+* [Capybara](https://github.com/jnicklas/capybara)
 * [DataMapper](http://datamapper.org/)
 * [Foundation CSS](http://foundation.zurb.com/)
 * [Git](https://git-scm.com/)
 * [GitHub](https://github.com/)
 * [Heroku](https://www.heroku.com/)
 * [PostgreSQL](http://www.postgresql.org/)
+* [RSpec](http://rspec.info/)
 * [Ruby](https://www.ruby-lang.org/en/)
 * [Sinatra](http://www.sinatrarb.com/)
 

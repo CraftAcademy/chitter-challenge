@@ -83,6 +83,21 @@ class App < Sinatra::Base
     end
   end
 
+  get '/sign_out' do
+    session[:user_id] = nil
+    flash[:alert] = "Catcha ya later, dude!"
+    redirect "/"
+  end
+
+  get '/share_chit' do
+    if !session[:user_id]
+      redirect "sign_in"
+    else
+      #
+    end
+    erb :share_chit
+  end
+
   # Do I need this?  If not, take it out.  Or??
   # Start the server if Ruby file executed directly:
   run! if app_file == $0

@@ -1,5 +1,4 @@
 feature "Sign Up" do
-
   before do
     visit "sign_up"
   end
@@ -40,7 +39,6 @@ feature "Sign Up" do
 end
 
 feature "Sign In" do
-
   before do
     visit "/sign_in"
   end
@@ -53,13 +51,16 @@ feature "Sign In" do
   end
 
 scenario "Allow registered user to sign in when valid inputs are submitted" do
-    User.create(name: "Chris", user_name: "chrisco", email: "git.chrisco@gmail.com", password: "password", password_confirm: "password")
-    visit "/sign_in"
-    fill_in "email", with: "git.chrisco@gmail.com"
-    fill_in "password", with: "password"
-
-    click_button "Sign In"
+    create_and_login_user("git.chrisco@gmail.com", "password")
     expect(page.current_path).to eq "/"
     expect(page).to have_content "Welcome Chris!"
+  end
+end
+
+feature "Sign Out" do
+  scenario "When signed-in users click the 'Sign Out' button, they are signed out" do
+    create_and_login_user("git.chrisco@gmail.com", "password")
+    visit "/sign_out"
+    expect(page).to have_content "Catcha ya later, dude!"
   end
 end

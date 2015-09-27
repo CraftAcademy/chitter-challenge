@@ -26,6 +26,14 @@ def app
   App
 end
 
+def create_and_login_user(email, password)
+  User.create(name: "Chris", user_name: "chrisco", email: "git.chrisco@gmail.com", password: "password", password_confirm: "password")
+  visit "/sign_in"
+  fill_in "email", with: "git.chrisco@gmail.com"
+  fill_in "password", with: "password"
+  click_button "Sign In"
+end
+
 Capybara.app = App
 
 RSpec.configure do |config|
