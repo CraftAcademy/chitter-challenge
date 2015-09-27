@@ -9,16 +9,16 @@ class User
 
   property :id,                  Serial
   property :name,                String, length: 255
-  property :user_name,           String, length: 255
-  property :email,               String, format: :email_address, unique: true, message: "This email is already taken"
+  property :user_name,           String, length: 255, unique: true, message: "This user name is already taken" # TODO: Display to user as necessary
+  property :email,               String, format: :email_address, unique: true, message: "This email is already taken" # TODO: Display to user as necessary
   property :password_digest,     Text, length: 255
   property :created_at,          DateTime
 
   validates_presence_of          :name
   validates_presence_of          :user_name
   validates_presence_of          :email
-  validates_presence_of          :password_digest
-  validates_confirmation_of      :password, message: "Sorry, your passwords don't match"
+  # validates_presence_of          :password_digest # TODO: Get working or remove
+  # validates_confirmation_of      :password, message: "Your passwords don't match. Try again." # TODO: Get working or remove
 
   has n, :chits, through: Resource
 
@@ -26,7 +26,7 @@ class User
     if self.password == self.password_confirm
       self.password_digest = BCrypt::Password.create(self.password)
     else
-      break # TODO: Flash or otherwise display relevant message to user
+      break # TODO: Flash or otherwise display relevant message to user if/when this code executes
     end
   end
 

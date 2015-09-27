@@ -5,6 +5,7 @@ require 'data_mapper'
 require 'dm-migrations'
 require 'tilt/erb'
 require './lib/chit'
+require './lib/user'
 
 class App < Sinatra::Base
   set :views, proc {File.join(root, '..', 'views')}
@@ -33,8 +34,13 @@ class App < Sinatra::Base
     if((params[:name] == '') || (params[:email] == '') || (params[:user_name] == '') || (params[:password] == '') || (params[:password_confirm] == ''))
       redirect '/sign_up'
     else
-      # TODO: Write code to create and save a new user.  Use TDD.  Use 'before :save' block and authentication
       new_user = User.new
+      new_user.name = params[:name]
+      new_user.user_name = params[:user_name]
+      new_user.email = params[:email]
+      new_user.password = params[:password]
+      new_user.password_confirm = params[:password_confirm]
+      new_user.save
       redirect '/'
     end
   end

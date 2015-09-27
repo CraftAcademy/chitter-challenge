@@ -2,7 +2,7 @@
 
 * Weekend Challenge No. 4 for [Maker's Academy Sweden.](http://www.makersacademy.se)
 * "Completed" by one novice full-stack developer in one weekend.
-* See the finished product live on the web at [www.ohchit.herokuapp.com](https://ohchit.herokuapp.com/) (work in progress!).
+* See the "finished" product live on the web at [www.ohchit.herokuapp.com](https://ohchit.herokuapp.com/).
 
 #User Stories
 
@@ -35,13 +35,13 @@ I want to see the time at which it was made
 #Other Requirements
 
 * Use BDD and TDD.
-* Registered Users sign up to OhChit with email, password, name, and user name.
-* Email and Registered user name must be unique.
+* Visitors to the website can sign up to OhChit with name, user name, email, and password.
+* Email and user name must be unique.
 * Chits (posts to OhChit) show the OhChit's registered user name and when he or she created the Chit.
-* Passwords are secured with bcrypt.
+* Passwords are secured with BCrypt.
 * DataMapper and PostgreSQL are used to persist data.
-* Visitors to OhChit do not have to be logged in to see the stream of Chits.
-* Registered Users can only Chit if they are logged in.
+* Visitors to OhChit do not have to be signed in to see the stream of Chits.
+* Registered Users can only Chit if they are signed in.
 
 #Notes on Test Coverage Reporting
 
@@ -63,6 +63,7 @@ Then run `open coverage/index.html` from the command line to view details.
 
 #Key Technologies Used
 
+* [BCrypt](https://en.wikipedia.org/wiki/Bcrypt)
 * [DataMapper](http://datamapper.org/)
 * [Foundation CSS](http://foundation.zurb.com/)
 * [Git](https://git-scm.com/)
