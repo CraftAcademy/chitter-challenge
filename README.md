@@ -74,7 +74,7 @@ Then run `open coverage/index.html` from the command line to view details.
 
 #TODO
 
-Update this README to indicate the technologies used and give instructions on how to install and run the tests.
+Update this README to give instructions on how to install and run the tests.
 
 #Bonus Registered User Story
 
@@ -90,4 +90,4 @@ Polish this Chit and make it beautiful.
 
 #LoFi Mockups (v1)
 
-![alt tag](http://i.imgur.com/DJJcVH6.jpg)
+![alt tag](https://raw.githubusercontent.com/chrisco/chitter-challenge/master/README-LoFi-Mockups.jpg)

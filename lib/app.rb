@@ -34,6 +34,7 @@ class App < Sinatra::Base
       redirect '/sign_up'
     else
       # TODO: Write code to create and save a new user.  Use TDD.  Use 'before :save' block and authentication
+      new_user = User.new
       redirect '/'
     end
   end
