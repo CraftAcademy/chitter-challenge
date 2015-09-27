@@ -37,7 +37,7 @@ I want to see the time at which it was made
 * Use BDD and TDD.
 * Visitors to the website can sign up to OhChit with name, user name, email, and password.
 * Email and user name must be unique.
-* Chits (posts to OhChit) show the OhChit's registered user name and when he or she created the Chit.
+* Chits (posts to OhChit) show chitter's user name and when he/she created the Chit.
 * Passwords are secured with BCrypt.
 * DataMapper and PostgreSQL are used to persist data.
 * Visitors to OhChit do not have to be signed in to see the stream of Chits.

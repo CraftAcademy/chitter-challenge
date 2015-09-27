@@ -108,9 +108,25 @@ class App < Sinatra::Base
         new_chit.user_id = session[:user_id]
         new_chit.save
         flash[:notice] = "You shared your chit!"
-        redirect '/'
+        redirect '/see_chit'
       end
     end
+
+    get '/see_chit' do
+      @chits = Chit.all(limit: 10, order: [ :created_at.desc ])
+      erb :see_chit
+    end
+
+    post 'search' do
+      # TODO: Create search functionality
+    end
+
+    get 'search_results' do
+      # TODO: Create search results page.
+      # Will be like see_chit page except instead of finding all
+      # it will find chits that contain the search string
+    end
+
 
   # Do I need this?  If not, take it out.  Or??
   # Start the server if Ruby file executed directly:
