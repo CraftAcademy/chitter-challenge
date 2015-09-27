@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 # require 'byebug'
 # require 'pry'
 require 'data_mapper'
@@ -20,13 +21,22 @@ class App < Sinatra::Base
   DataMapper.finalize
   # DataMapper.auto_migrate!
   DataMapper.auto_upgrade!
-  #byebug
+
+  register Sinatra::Flash
+
+  # This is here as a reminder and question to myself.
+  # I think I get what it does, but I don't see where the "is_user?" method is
+  # coming from, so it must be inherited?  Or??  Hmmm.
+  # From Thomas: https://github.com/tochman/my_app/blob/master/lib/user.rb#L39
+  # before do
+  #   @user = User.get(session[:user_id]) unless is_user?
+  # end
 
   get '/' do
     erb :index
   end
 
-  get '/sign_up' do
+  get '/sign_up' do # TODO: Use hyphens instead of underscores on routes for better user readability?
     erb :sign_up
   end
 
@@ -45,6 +55,20 @@ class App < Sinatra::Base
     end
   end
 
-  # start the server if ruby file executed directly
+  get '/sign_in' do
+    erb :sign_in
+  end
+
+  post '/sign_in' do
+    email = params[:email]
+    password = params[:password]
+    @user = User.authenticate(email, password)
+    session[:user_id] = @user.id
+    flash[:notice] = "Welcome #{@user.name}!" # FIXME: Why is this not working?
+    redirect '/'
+  end
+
+  # Do I need this?  If not, take it out.  Or??
+  # Start the server if Ruby file executed directly:
   run! if app_file == $0
 end

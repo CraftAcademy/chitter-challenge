@@ -1,4 +1,5 @@
 require "bcrypt"
+require 'data_mapper' # Not sure if need here. Was trying to load this file in IRB and it complained about DataMapper, so I added this line and then it loaded.
 
 class User
 
@@ -26,7 +27,7 @@ class User
     if self.password == self.password_confirm
       self.password_digest = BCrypt::Password.create(self.password)
     else
-      break # TODO: Flash or otherwise display relevant message to user if/when this code executes
+      break # TODO: Flash or otherwise display relevant message to user if/when this code executes?
     end
   end
 
@@ -37,6 +38,11 @@ class User
     else
       nil
     end
+  end
+
+  # From Thomas: https://github.com/tochman/my_app/blob/master/lib/user.rb#L39
+  def is_owner?(obj)
+    obj.user_id == self.id
   end
 
 end

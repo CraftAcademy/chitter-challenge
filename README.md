@@ -2,7 +2,7 @@
 
 * Weekend Challenge No. 4 for [Maker's Academy Sweden.](http://www.makersacademy.se)
 * "Completed" by one novice full-stack developer in one weekend.
-* See the "finished" product live on the web at [www.ohchit.herokuapp.com](https://ohchit.herokuapp.com/).
+* See the "finished" app live on the web at [www.ohchit.herokuapp.com](https://ohchit.herokuapp.com/).
 
 #User Stories
 

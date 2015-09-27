@@ -5,6 +5,7 @@ ruby '2.2.3'
 gem 'pg'
 gem 'dm-postgres-adapter'
 gem 'sinatra'
+gem 'sinatra-flash'
 gem 'data_mapper'
 gem 'bcrypt'
 
