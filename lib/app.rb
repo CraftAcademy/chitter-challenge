@@ -13,7 +13,7 @@ class App < Sinatra::Base
   enable :sessions
   set :session_secret, '123321123'
   use Rack::Session::Pool
-  env = ENV['RACK_ENV'] || "dev"
+  env = ENV['RACK_ENV'] || "development"
   DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/chitter_web_#{env}")
 
   DataMapper.finalize
@@ -22,17 +22,29 @@ class App < Sinatra::Base
   get '/' do
     @peeps = Peep.all(order: [ :created_at.desc ])
     erb :index
+  end
 
+  get '/join' do
+    erb :join
+  end
+
+  post '/join' do
+    if((params[:name] == '') || (params[:email] == '') || (params[:user_name] == '') || (params[:password] == '') || (params[:password_confirm] == ''))
+      redirect 'join'
+    else
+      new_user = User.new
+      new_user.name = params[:name]
+      new_user.user_name = params[:user_name]
+      new_user.email = params[:email]
+      new_user.password = params[:password]
+      new_user.password_confirm = params[:password_confirm]
+      new_user.save
+      redirect '/'
+    end
   end
 
   get '/peeps' do
     @peeps = Peep.all(order: [ :created_at.desc ])
-    erb :'peeps/index'
-  end
-
-
-  get '/users/new_user' do
-    erb :'users/new_user'
+    erb :peeps
   end
 end
-
