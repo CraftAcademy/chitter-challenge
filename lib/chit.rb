@@ -3,8 +3,11 @@ class Chit
   include DataMapper::Resource
 
   property :id,         Serial
-  property :chit,       String
+  property :chit_text,  String
+  property :created_at, DateTime
 
-  validates_presence_of :chit
+  belongs_to :user
+
+  validates_presence_of :chit_text
 
 end

@@ -85,7 +85,7 @@ class App < Sinatra::Base
 
   get '/sign_out' do
     session[:user_id] = nil
-    flash[:alert] = "Catcha ya later, dude!"
+    flash[:notice] = "Catcha ya later, dude!"
     redirect "/"
   end
 
@@ -96,6 +96,21 @@ class App < Sinatra::Base
       erb :share_chit
     end
   end
+
+    post '/share_chit' do
+      if(params[:chit_text] == '')
+        flash[:warning] = "You submitted invalid data.  Please try again."
+        redirect '/share_chit'
+      else
+        new_chit = Chit.new
+        new_chit.chit_text = params[:chit_text]
+        new_chit.created_at = Time.now
+        new_chit.user_id = session[:user_id]
+        new_chit.save
+        flash[:notice] = "You shared your chit!"
+        redirect '/'
+      end
+    end
 
   # Do I need this?  If not, take it out.  Or??
   # Start the server if Ruby file executed directly:

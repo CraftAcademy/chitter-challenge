@@ -14,7 +14,7 @@ feature "Share Chit" do
     visit "/share_chit"
     expect(page).to have_selector "form[action='/share_chit']"
     expect(page).to have_selector "form[method='post']"
-    expect(page).to have_selector "input[name='chit']"
+    expect(page).to have_selector "input[name='chit_text']"
     expect(page).to have_selector :link_or_button, "Share Chit"
   end
 
