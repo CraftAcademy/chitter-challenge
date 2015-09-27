@@ -93,9 +93,8 @@ class App < Sinatra::Base
     if !session[:user_id]
       redirect "sign_in"
     else
-      #
+      erb :share_chit
     end
-    erb :share_chit
   end
 
   # Do I need this?  If not, take it out.  Or??

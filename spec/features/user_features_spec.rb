@@ -11,6 +11,7 @@ feature "Sign Up" do
     expect(page).to have_selector "input[name='email']"
     expect(page).to have_selector "input[name='password']"
     expect(page).to have_selector "input[name='password_confirm']"
+    expect(page).to have_selector :link_or_button, "Sign Up"
   end
 
   scenario "Create a new user when valid inputs are submitted" do
@@ -48,6 +49,7 @@ feature "Sign In" do
     expect(page).to have_selector "form[method='post']"
     expect(page).to have_selector "input[name='email']"
     expect(page).to have_selector "input[name='password']"
+    expect(page).to have_selector :link_or_button, "Sign In"
   end
 
 scenario "Allow registered user to sign in when valid inputs are submitted" do
