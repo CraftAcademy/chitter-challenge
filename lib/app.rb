@@ -42,6 +42,7 @@ class App < Sinatra::Base
 
   post '/sign_up' do
     if((params[:name] == '') || (params[:email] == '') || (params[:user_name] == '') || (params[:password] == '') || (params[:password_confirm] == ''))
+      flash[:warning] = "You submitted invalid data.  Please try again."
       redirect '/sign_up'
     else
       new_user = User.new
@@ -60,12 +61,26 @@ class App < Sinatra::Base
   end
 
   post '/sign_in' do
-    email = params[:email]
-    password = params[:password]
-    @user = User.authenticate(email, password)
-    session[:user_id] = @user.id
-    flash[:notice] = "Welcome #{@user.name}!" # FIXME: Why is this not working?
-    redirect '/'
+    if((params[:email] == '') || (params[:password] == ''))
+      flash[:warning] = "You submitted invalid data.  Please try again."
+      redirect '/sign_in'
+    else
+      # I'm not sure about this "begin / rescue" business.
+      # Got it from Thomas and need to learn more about it.
+      # https://github.com/tochman/my_app/blob/master/lib/my_app.rb#L76
+      # Leaving it here as a reminder and question.
+      begin
+        email = params[:email]
+        password = params[:password]
+        @user = User.authenticate(email, password)
+        session[:user_id] = @user.id
+        flash[:notice] = "Welcome #{@user.name}!"
+        redirect '/'
+      rescue
+        flash[:warning] = "You submitted invalid data.  Please try again."
+        redirect "/sign_in"
+      end
+    end
   end
 
   # Do I need this?  If not, take it out.  Or??

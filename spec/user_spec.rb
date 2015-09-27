@@ -14,24 +14,24 @@ describe User do
   it { is_expected.to have_many :chits }
 end
 
-describe "password encryption" do
-      it "encrypts password" do
+describe "Password encryption" do
+      it "Encrypts password" do
       user = User.create(name: "Chris", user_name: "chrisco", email: "chris@chris.com", password: "right_password", password_confirm: "right_password")
       expect(user.password_digest.class).to eq BCrypt::Password
       expect(user.password_digest.version).to eq "2a"
       end
   end
 
-  describe "user authentication" do
+  describe "User authentication" do
     before do
       @user = User.create(name: "Chris", user_name: "chrisco", email: "chris@chris.com", password: "right_password", password_confirm: "right_password")
     end
 
-    it "with valid credentials" do
+    it "With valid credentials" do
       expect(User.authenticate("chris@chris.com", "right_password")).to eq @user
     end
 
-    it "with invalid credentials" do
+    it "With INVALID credentials" do
       expect(User.authenticate("chris@chris.com", "wrong-password")).to eq nil
     end
   end

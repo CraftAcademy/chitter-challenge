@@ -35,7 +35,7 @@ feature "Sign Up" do
     fill_in "password_confirm", with: "right-password"
     click_button "Sign Up"
     expect(User.count).to eq 0
-    # expect(page).to have_content "Error: You left the 'name' field blank. Please try again."
+    expect(page).to have_content "You submitted invalid data.  Please try again."
   end
 end
 
@@ -60,6 +60,6 @@ scenario "Allow registered user to sign in when valid inputs are submitted" do
 
     click_button "Sign In"
     expect(page.current_path).to eq "/"
-    # expect(page).to have_content "Welcome Chris!"
+    expect(page).to have_content "Welcome Chris!"
   end
 end

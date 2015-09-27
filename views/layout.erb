@@ -1,95 +1,102 @@
 <!DOCTYPE html>
 <!--[if IE 9]>
 <html class="lt-ie10" lang="en">
-<![endif]-->
-<html class="no-js" lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oh Chit!</title>
-  <!-- normalize.css and modernizr.js help with browser compatibility -->
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/foundation.css">
-  <link rel="stylesheet" href="/css/app.css">
-  <script src="js/vendor/modernizr.js"></script>
-</head>
-<body>
-<div class="row">
-  <div class="small-1 small-centered columns"></div>
-  <div class="small-10 small-centered columns">
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="/">Oh Chit!</a></h1>
-        </li>
-        <li class="has-form">
-          <div class="row collapse">
-            <div class="large-8 small-9 columns">
-              <input type="text" placeholder="Find Chit">
-            </div>
-            <div class="large-4 small-3 columns">
-              <a href="#" class="alert button expand">Search</a>
-            </div>
-          </div>
-        </li>
-        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
-
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <li><a href="/share_chit">Share Chit</a></li>
-          <li><a href="/sign_in">Sign In</a></li>
-          <li><a href="/sign_up">Sign Up</a></li>
-          <li class="has-dropdown">
-            <a href="#">My Account</a>
-            <ul class="dropdown">
-              <li><a href="/profile">Profile</a></li>
-              <li><a href="/sign_out">Sign Out</a></li>
-            </ul>
-          </li>
-        </ul>
-
-        <!-- Left Nav Section -->
-        <ul class="left">
-
-        </ul>
-      </section>
-    </nav>
-    <br>
-    <%= yield %>
-    <br>
-  </div>
-  <div class="small-1 small-centered columns"></div>
-</div>
-<div class="row">
-  <div class="small-1 small-centered columns"></div>
-  <div class="small-10 small-centered columns">
-    <footer class="footer">
+  <![endif]-->
+  <html class="no-js" lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Oh Chit!</title>
+      <!-- normalize.css and modernizr.js help with browser compatibility -->
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="/css/foundation.css">
+      <link rel="stylesheet" href="/css/app.css">
+      <script src="js/vendor/modernizr.js"></script>
+    </head>
+    <body>
       <div class="row">
-        <div class="small-12 columns">
-          <p class="slogan">Best Twitter clone ever!</p>
-
-          <p class="links">
-            <a href="/">Home</a>
-            <a href="/share_chit">Share Chit</a>
-            <a href="/sign_in">Sign In</a>
-            <a href="/sign_up">Sign Up</a>
-            <a href="/profile">My Profile</a>
-            <a href="/sign_out">Sign Out</a>
-          </p>
-          <p class="copyright">Copyright © 2015. Oh Chit.</p>
+        <div class="small-1 small-centered columns"></div>
+        <div class="small-10 small-centered columns">
+          <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+              <li class="name">
+                <h1><a href="/">Oh Chit!</a></h1>
+              </li>
+              <li class="has-form">
+                <div class="row collapse">
+                  <div class="large-8 small-9 columns">
+                    <input type="text" placeholder="Find Chit">
+                  </div>
+                  <div class="large-4 small-3 columns">
+                    <a href="#" class="alert button expand">Search</a>
+                  </div>
+                </div>
+              </li>
+              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+              <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+              <!-- Right Nav Section -->
+              <ul class="right">
+                <li><a href="/share_chit">Share Chit</a></li>
+                <li><a href="/sign_in">Sign In</a></li>
+                <li><a href="/sign_up">Sign Up</a></li>
+                <li class="has-dropdown">
+                  <a href="#">My Account</a>
+                  <ul class="dropdown">
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/sign_out">Sign Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <!-- Left Nav Section -->
+              <ul class="left">
+              </ul>
+            </section>
+          </nav>
+          <!-- Flash Section -->
+          <% if flash %>
+          <% flash.each do |name, msg| %>
+          <div id="flash-container" data-alert class="alert-box <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+            <%= msg %>
+            <a href="#" class="close">&times;</a>
+          </div>
+          <% end %>
+          <% end %>
+          <!-- Yield Section -->
+          <br>
+          <%= yield %>
+          <br>
+          <!-- Footer Section -->
         </div>
+        <div class="small-1 small-centered columns"></div>
       </div>
-    </footer>
-  </div>
-  <div class="small-1 small-centered columns"></div>
-</div>
-<script src="/js/vendor/jquery.js"></script>
-<script src="/js/foundation.min.js"></script>
-<script>
-  $(document).foundation();
-</script>
-</body>
-</html>
+      <div class="row">
+        <div class="small-1 small-centered columns"></div>
+        <div class="small-10 small-centered columns">
+          <footer class="footer">
+            <div class="row">
+              <div class="small-12 columns">
+                <p class="slogan">Best Twitter clone ever!</p>
+                <p class="links">
+                  <a href="/">Home</a>
+                  <a href="/share_chit">Share Chit</a>
+                  <a href="/sign_in">Sign In</a>
+                  <a href="/sign_up">Sign Up</a>
+                  <a href="/profile">My Profile</a>
+                  <a href="/sign_out">Sign Out</a>
+                </p>
+                <p class="copyright">Copyright © 2015. Oh Chit.</p>
+              </div>
+            </div>
+          </footer>
+        </div>
+        <div class="small-1 small-centered columns"></div>
+      </div>
+      <script src="/js/vendor/jquery.js"></script>
+      <script src="/js/foundation.min.js"></script>
+      <script>
+      $(document).foundation();
+      </script>
+    </body>
+  </html>
