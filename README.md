@@ -1,6 +1,6 @@
 #About
 
-* Weekend Challenge No. 4 for ["Maker's Academy Sweden."](http://www.makersacademy.se)
+* Weekend Challenge No. 4 for [Maker's Academy Sweden.](http://www.makersacademy.se)
 * "Completed" by one novice full-stack developer in one weekend.
 * See the finished product live on the web at [www.ohchit.herokuapp.com](https://ohchit.herokuapp.com/) (work in progress!).
 
@@ -59,7 +59,18 @@ Coveralls.wear!
 ```
 
 Note that you can replace `Coveralls.wear!` with  `SimpleCov.start` to get coverage stats locally
-Then run `open coverage/index.html` from the command line to view details
+Then run `open coverage/index.html` from the command line to view details.
+
+#Key Technologies Used
+
+* [DataMapper](http://datamapper.org/)
+* [Foundation CSS](http://foundation.zurb.com/)
+* [Git](https://git-scm.com/)
+* [GitHub](https://github.com/)
+* [Heroku](https://www.heroku.com/)
+* [PostgreSQL](http://www.postgresql.org/)
+* [Ruby](https://www.ruby-lang.org/en/)
+* [Sinatra](http://www.sinatrarb.com/)
 
 #TODO
 
@@ -76,3 +87,7 @@ I want to reply to a Chit from another OhChit.
 #Bonus CSS
 
 Polish this Chit and make it beautiful.
+
+#LoFi Mockups (v1)
+
+![alt tag](http://i.imgur.com/DJJcVH6.jpg)
