@@ -11,6 +11,7 @@ class User
   property :name,                String, length: 255
   property :user_name,           String, length: 30
   property :email,               String, format: :email_address, unique: true, message: "This email is already taken"
+  property :password_confirm,    Text, length: 255
   property :password_digest,     Text, length: 255
   property :created_at,          DateTime
 

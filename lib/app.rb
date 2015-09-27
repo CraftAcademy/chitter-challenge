@@ -1,11 +1,12 @@
 
 require 'sinatra/base'
+require 'sinatra/flash'
 #require 'byebug'
 require 'tilt/erb'
 require 'data_mapper'
 require 'dm-migrations'
-require './lib/peep'
-require './lib/users'
+require 'peep'
+require 'users'
 
 class App < Sinatra::Base
 
@@ -40,6 +41,33 @@ class App < Sinatra::Base
       new_user.password_confirm = params[:password_confirm]
       new_user.save
       redirect '/'
+    end
+  end
+
+  get '/sign_in' do
+    erb :sign_in
+  end
+
+  post '/sign_in' do
+    if((params[:email] == '') || (params[:password] == ''))
+      flash[:warning] = "You submitted invalid data.  Please try again."
+      redirect '/sign_in'
+    else
+      # I'm not sure about this "begin / rescue" business.
+      # Got it from Thomas and need to learn more about it.
+      # https://github.com/tochman/my_app/blob/master/lib/my_app.rb#L76
+      # Leaving it here as a reminder and question.
+      begin
+        email = params[:email]
+        password = params[:password]
+        @user = User.authenticate(email, password)
+        session[:user_id] = @user.id
+        flash[:notice] = "Welcome #{@user.name}!"
+        redirect '/'
+        rescue
+          flash[:warning] = "You submitted invalid data.  Please try again."
+          redirect "/sign_in"
+      end
     end
   end
 

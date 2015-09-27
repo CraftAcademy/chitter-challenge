@@ -4,6 +4,7 @@ ruby '2.2.3'
 gem 'pg'
 gem 'dm-postgres-adapter'
 gem 'sinatra'
+gem 'sinatra-flash'
 gem 'data_mapper'
 gem 'sinatra-formhelpers-ng'
 gem 'bcrypt'
@@ -16,7 +17,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'dm-rspec'
-  gem 'launchy'
   gem 'pry'
   gem 'rake'
   gem 'rack-test'
@@ -25,5 +25,6 @@ group :test do
   gem 'rubocop-rspec'
   gem 'shotgun'
   gem 'byebug'
+  gem 'launchy'
 end
 

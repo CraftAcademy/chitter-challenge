@@ -10,6 +10,5 @@ class Peep
 
 
   validates_presence_of :peep_content
-  validates_length_of :peep_content, length: { maximum: 140 }
-
-  end
+  validates_length_of :peep_content, :maximum => 250
+end
