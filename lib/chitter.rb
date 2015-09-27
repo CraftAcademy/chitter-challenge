@@ -26,5 +26,9 @@ class Chitter < Sinatra::Base
     erb :index
   end
 
+  get '/users' do
+  	erb :'users/new_user'
+  end
+
     run! if app_file == $0
 end

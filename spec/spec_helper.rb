@@ -19,19 +19,6 @@ SimpleCov.formatters = [
 ]
 Coveralls.wear!
 
-def chitter
-  Chitter
-end
-
-# def populate_links
-#   link = Link.create(title: 'Makers Academy', url: 'http://makersacademy.se', description: 'Whatever', user_id: 1)
-#   ['start-up', 'sweden', 'incubator'].each do |tag|
-#     new_tag = Tag.first_or_create(title: tag)
-#     link.tags << new_tag
-#     link.save
-#   end
-# end
-
 Capybara.app = Chitter
 
 RSpec.configure do |config|
@@ -47,16 +34,18 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  # config.before(:suite) do
-  #   DatabaseCleaner.strategy = :transaction
-  #   DatabaseCleaner.clean_with(:truncation)
-  # end
-  #
-  # config.before(:each) do
-  #   DatabaseCleaner.start
-  # end
-  #
-  # config.after(:each) do
-  #   DatabaseCleaner.clean
-  # end
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
+
 end
