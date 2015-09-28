@@ -1,0 +1,25 @@
+<h2 align="center">Check this chit out!</h2>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <% if @chits.empty? %>
+    Sorry, no chits here.
+    <br>
+    <% else %>
+    <% @chits.each do |chit| %>
+    <div class="panel">
+      <%= chit[:chit_text] %>
+      <small>
+      <br>
+      Created: <%= chit[:created_at].to_time %>
+      <% chitter = chit[:user_id] %>
+      By: <%= User.get(chitter).user_name %>
+      </small>
+      <br>
+    </div>
+    <% end %>
+    <% end %>
+    <form>
+      <button class="button round button success button expand" type="submit" formmethod="get" formaction="/share_chit">Share Chit!</button>
+    </form>
+  </div>
+</div>
