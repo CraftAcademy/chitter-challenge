@@ -16,7 +16,9 @@ class User
   property :created_at,          DateTime
 
   validates_presence_of          :name
+  validates_length_of            :name, maximum: 50
   validates_presence_of          :user_name
+  validates_length_of            :user_name, maximum: 25
   validates_presence_of          :email
   # validates_presence_of          :password_digest # TODO: Get working or remove
   # validates_confirmation_of      :password, message: "Your passwords don't match. Try again." # TODO: Get working or remove

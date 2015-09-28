@@ -84,8 +84,9 @@ class App < Sinatra::Base
   end
 
   get '/sign_out' do
-    session[:user_id] = nil
     flash[:notice] = "Catcha ya later, dude!"
+    session[:user_id] = nil
+    @user = nil
     redirect "/"
   end
 
@@ -102,13 +103,18 @@ class App < Sinatra::Base
         flash[:warning] = "You submitted invalid data.  Please try again."
         redirect '/share_chit'
       else
-        new_chit = Chit.new
-        new_chit.chit_text = params[:chit_text]
-        new_chit.created_at = Time.now
-        new_chit.user_id = session[:user_id]
-        new_chit.save
-        flash[:notice] = "You shared your chit!"
-        redirect '/see_chit'
+        begin
+          new_chit = Chit.new
+          new_chit.chit_text = params[:chit_text]
+          new_chit.created_at = Time.now
+          new_chit.user_id = session[:user_id]
+          new_chit.save
+          flash[:notice] = "You shared your chit!"
+          redirect '/see_chit'
+        rescue
+          flash[:warning] = "Oops, your chit was too big.  Max chit length is 140 characters.  Please try again."
+          redirect "/share_chit"
+        end
       end
     end
 
