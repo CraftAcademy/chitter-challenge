@@ -38,7 +38,7 @@ class Chitter < Sinatra::Base
 
   post '/sign_up' do
     begin
-      @user = User.create(:username => params[:username], :password => params[:password], :password_confirmation => params[:password_confirmation], :name => params[:name], :email => params[:email],)
+      @user = User.create(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation], name: params[:name], email: params[:email],)
       session[:user_id] = @user.id
       redirect '/'
     rescue
@@ -74,7 +74,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/send_peep' do
-    Peep.create(:message => params[:message], :created_at => Time.now, :created_by => @user.username, :created_by_name => @user.name, user_id: @user.id)
+    Peep.create(message: params[:message], created_at: Time.now, created_by: @user.username, created_by_name: @user.name, user_id: @user.id)
     redirect '/'
   end
 
