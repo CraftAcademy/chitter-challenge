@@ -34,6 +34,11 @@ def create_and_login_user(email, password)
   click_button "Sign In"
 end
 
+def create_chits
+  # TODO: Write method to use in share_chit_features_spec.rb.
+  # Maybe also remove the work "spec" from the end of all the feature tests?
+end
+
 Capybara.app = App
 
 RSpec.configure do |config|

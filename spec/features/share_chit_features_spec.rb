@@ -3,6 +3,9 @@ feature "Share Chit" do
     visit "share_chit"
   end
 
+  # TODO: Add more tests, including those that use
+  # helper method stubbed out in spec_helper.rb.
+
   scenario "Render 'Share Chit' page if signed in" do
     create_and_login_user("git.chrisco@gmail.com", "password")
     visit "/share_chit"

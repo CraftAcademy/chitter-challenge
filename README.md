@@ -75,9 +75,16 @@ Then run `open coverage/index.html` from the command line to view details.
 * [Ruby](https://www.ruby-lang.org/en/)
 * [Sinatra](http://www.sinatrarb.com/)
 
+# How to Run Tests
+
+Clone, bundle, and run RSpec and Capybara tests in spec folder.
+
 #TODO
 
-Update this README to give instructions on how to install and run the tests.
+* Create (at least) two different nav bars and foolters: Default ones that all visitors see and ones that only signed-in users see.
+* Use partials for nav bars and footers.
+* More tests.
+* Implement search functionality and other functionality, such as profile pages, hashtags, and the bonus user story listed below.
 
 #Bonus Registered User Story
 
