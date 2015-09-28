@@ -26,7 +26,7 @@ feature 'Send Peep' do
   scenario 'signed in user can send a peep' do
     create_and_login_user
     visit '/send_peep'
-    fill_in 'message', :with => 'Test message'
+    fill_in 'message', with: 'Test message'
     click_button 'Send Peep'
     expect(page.current_path).to eq '/'
     expect(page).to have_content 'Peep Message'

@@ -15,13 +15,13 @@ require 'database_cleaner'
 def create_and_login_user
   create_user
   visit '/sign_in'
-  fill_in 'username', :with => 'username'
-  fill_in 'password', :with => 'password'
+  fill_in 'username', with: 'username'
+  fill_in 'password', with: 'password'
   click_button 'Sign in'
 end
 
 def create_user
-  User.create(username: 'username', password: 'password', password_confirmation: 'password',name: 'name', email: 'email')
+  User.create(username: 'username', password: 'password', password_confirmation: 'password', name: 'name', email: 'email')
 end
 
 SimpleCov.formatters = [
@@ -37,18 +37,16 @@ RSpec.configure do |config|
   config.include DataMapper::Matchers
 
   config.expect_with :rspec do |expectations|
-
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
   config.mock_with :rspec do |mocks|
-
     mocks.verify_partial_doubles = true
   end
 
    config.before(:suite) do
-      DatabaseCleaner.strategy = :transaction
-      DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do

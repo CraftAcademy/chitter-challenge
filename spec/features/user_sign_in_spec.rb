@@ -21,8 +21,8 @@ feature 'user sign in' do
     scenario 'user can sign in' do
       create_user
       visit '/sign_in'
-      fill_in 'username', :with => 'username'
-      fill_in 'password', :with => 'password'
+      fill_in 'username', with: 'username'
+      fill_in 'password', with: 'password'
       click_button 'Sign in'
       expect(page.current_path).to eq '/'
       expect(page.status_code).to eq 200
@@ -32,8 +32,8 @@ feature 'user sign in' do
     scenario 'user cant sign in if password doesnt match' do
       create_user
       visit '/sign_in'
-      fill_in 'username', :with => 'usernamer'
-      fill_in 'password', :with => 'password_wrong'
+      fill_in 'username', with: 'usernamer'
+      fill_in 'password', with: 'password_wrong'
       click_button 'Sign in'
       expect(page.current_path).to eq '/sign_in'
       expect(page).not_to have_content 'Signed in as: username'

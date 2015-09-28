@@ -24,11 +24,11 @@ feature 'user sign up' do
     scenario 'user can sign up' do
       expect(User.count).to eq 0
       visit '/sign_up'
-      fill_in 'username', :with => 'username'
-      fill_in 'password', :with => 'password'
-      fill_in 'password_confirmation', :with => 'password'
-      fill_in 'name', :with => 'name'
-      fill_in 'email', :with => 'email'
+      fill_in 'username', with: 'username'
+      fill_in 'password', with: 'password'
+      fill_in 'password_confirmation', with: 'password'
+      fill_in 'name', with: 'name'
+      fill_in 'email', with: 'email'
       click_button 'Sign Up'
       expect(User.count).to eq 1
       expect(page.current_path).to eq '/'
@@ -38,11 +38,11 @@ feature 'user sign up' do
     scenario 'user cant sign up if password doesnt match' do
       expect(User.count).to eq 0
       visit '/sign_up'
-      fill_in 'username', :with => 'username'
-      fill_in 'password', :with => 'password'
-      fill_in 'password_confirmation', :with => 'wrong_password'
-      fill_in 'name', :with => 'name'
-      fill_in 'email', :with => 'email'
+      fill_in 'username', with: 'username'
+      fill_in 'password', with: 'password'
+      fill_in 'password_confirmation', with: 'wrong_password'
+      fill_in 'name', with: 'name'
+      fill_in 'email', with: 'email'
       click_button 'Sign Up'
       expect(User.count).to eq 0
       expect(page.current_path).to eq '/sign_up'

@@ -16,12 +16,12 @@ describe User do
   it { is_expected.to validate_presence_of :password }
   it { is_expected.to validate_presence_of :password_confirmation }
 
-    describe 'password encryption' do
+  describe 'password encryption' do
 
-      it 'can encrypt a password' do
-        user = create_user
-        expect(user.password_digest).not_to eq nil
-      end
+    it 'can store the encrypted password in password_digest' do
+      user = create_user
+      expect(user.password_digest).not_to eq nil
     end
+  end
 
 end
