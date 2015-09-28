@@ -96,6 +96,18 @@
       <script src="/js/vendor/jquery.js"></script>
       <script src="/js/foundation.min.js"></script>
       <script>
+        $( document ).ready(function() {
+            var flash = $('#flash-container');
+            if (flash.length > 0) {
+                window.setTimeout(function () {
+                    flash.fadeTo(500, 0).slideUp(500, function () {
+                        $(this).remove();
+                    });
+                }, 5000);
+            }
+        });
+      </script>
+      <script>
       $(document).foundation();
       </script>
     </body>

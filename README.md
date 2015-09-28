@@ -83,7 +83,9 @@ Clone, bundle, and run RSpec and Capybara tests in spec folder.
 
 * Create (at least) two different nav bars and foolters: Default ones that all visitors see and ones that only signed-in users see.
 * Use partials for nav bars and footers.
-* More tests.
+* Add client side validation.
+* Add more server-side / database validation.
+* Write more tests.
 * Implement search functionality and other functionality, such as profile pages, hashtags, and the bonus user story listed below.
 
 #Bonus Registered User Story

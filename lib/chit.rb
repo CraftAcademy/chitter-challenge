@@ -9,5 +9,6 @@ class Chit
   belongs_to :user
 
   validates_presence_of :chit_text
+  validates_length_of :chit_text, maximum: 250
 
 end
