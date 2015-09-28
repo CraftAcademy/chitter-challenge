@@ -13,7 +13,7 @@ require 'dm-rspec'
 require 'database_cleaner'
 
 def create_and_login_user
-  User.create(username: 'username', password: 'password', password_confirmation: 'password',name: 'name', email: 'email')
+  create_user
   visit '/sign_in'
   fill_in 'username', :with => 'username'
   fill_in 'password', :with => 'password'

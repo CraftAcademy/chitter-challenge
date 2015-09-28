@@ -19,7 +19,7 @@ feature 'Send Peep' do
     expect(page).to have_selector "input[type='text']"
     expect(page).to have_selector "input[name='message']"
     expect(page).to have_selector "input[type='submit']"
-    expect(page).to have_button "Submit Peep"
+    expect(page).to have_button "Send Peep"
     expect(page.current_path).to eq '/send_peep'
   end
 
@@ -27,7 +27,7 @@ feature 'Send Peep' do
     create_and_login_user
     visit '/send_peep'
     fill_in 'message', :with => 'Test message'
-    click_button 'Submit Peep'
+    click_button 'Send Peep'
     expect(page.current_path).to eq '/'
     expect(page).to have_content 'Peep Message'
     expect(page).to have_content 'Test message'
