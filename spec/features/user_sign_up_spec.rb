@@ -1,6 +1,6 @@
 feature 'user sign up' do
 
-    before {visit '/'}
+  before {visit '/'}
 
     scenario 'click on button sign up route to /sign_up page' do
       click_on 'Sign Up'

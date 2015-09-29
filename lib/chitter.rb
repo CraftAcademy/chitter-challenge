@@ -51,8 +51,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/sign_in' do
-    if
-      @user = User.authenticate(params[:username], params[:password])
+    if @user = User.authenticate(params[:username], params[:password])
       session[:user_id] = @user.id
       redirect '/'
     else
@@ -76,6 +75,14 @@ class Chitter < Sinatra::Base
   post '/send_peep' do
     Peep.create(message: params[:message], created_at: Time.now, created_by: @user.username, created_by_name: @user.name, user_id: @user.id)
     redirect '/'
+  end
+
+  get '/my_peeps' do
+    if session[:user_id] == nil
+      redirect '/sign_in'
+    else
+      erb :my_peeps
+    end
   end
 
   # start the server if ruby file executed directly

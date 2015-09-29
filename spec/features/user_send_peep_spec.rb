@@ -32,4 +32,21 @@ feature 'Send Peep' do
     expect(page).to have_content 'Peep Message'
     expect(page).to have_content 'Test message'
   end
+
+  scenario 'logged in user can visit my peeps path' do
+    create_and_login_user
+    click_on 'My Peeps'
+    expect(page.current_path).to eq '/my_peeps'
+    expect(page.status_code).to eq 200
+  end
+
+  scenario 'logged in user can only see my own peeps on My Peeps path' do
+    create_login_user_send_message
+    click_on 'Sign Out'
+    create_login_user_send_message_2
+    click_on 'My Peeps'
+    expect(page).to have_content 'User2 message'
+    expect(page).to_not have_content 'User1 message'
+  end
+
 end

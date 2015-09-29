@@ -12,6 +12,28 @@ require 'simplecov'
 require 'dm-rspec'
 require 'database_cleaner'
 
+def create_login_user_send_message_2
+  create_user2
+  visit '/sign_in'
+  fill_in 'username', with: 'username2'
+  fill_in 'password', with: 'password2'
+  click_button 'Sign in'
+  click_on 'Send Peep'
+  fill_in 'message', with: 'User2 message'
+  click_button 'Send Peep'
+end
+
+def create_login_user_send_message
+  create_user
+  visit '/sign_in'
+  fill_in 'username', with: 'username'
+  fill_in 'password', with: 'password'
+  click_button 'Sign in'
+  click_on 'Send Peep'
+  fill_in 'message', with: 'User1 message'
+  click_button 'Send Peep'
+end
+
 def create_and_login_user
   create_user
   visit '/sign_in'
@@ -22,6 +44,10 @@ end
 
 def create_user
   User.create(username: 'username', password: 'password', password_confirmation: 'password', name: 'name', email: 'email')
+end
+
+def create_user2
+  User.create(username: 'username2', password: 'password2', password_confirmation: 'password2', name: 'name2', email: 'email2')
 end
 
 SimpleCov.formatters = [
