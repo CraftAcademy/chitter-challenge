@@ -7,7 +7,7 @@ require './lib/peep'
 
 
 class Chitter < Sinatra::Base
-  set :views, proc {File.join(root, '..', 'views')}
+  set :views, proc { File.join(root, '..', 'views') }
   enable :sessions
   set :session_secret, '123321123'
   use Rack::Session::Pool
@@ -83,6 +83,29 @@ class Chitter < Sinatra::Base
     else
       erb :my_peeps
     end
+  end
+
+  get '/delete/:id' do
+    peep = Peep.get(params[:id])
+    peep.destroy!
+    redirect '/my_peeps'
+  end
+
+  get '/update_peep/:id' do
+    @peep = Peep.get(params[:id]).id
+    @message = Peep.get(params[:id]).message
+    erb :update_peep
+  end
+
+  post '/update_peep' do
+    @updatepeep = Peep.get(params[:id]).message
+    erb :update_peep
+  end
+
+  post '/update/:id' do
+    peep = Peep.get(params[:id])
+    peep.update(message: params[:message])
+    redirect '/my_peeps'
   end
 
   # start the server if ruby file executed directly

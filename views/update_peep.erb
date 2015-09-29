@@ -1,0 +1,6 @@
+<p>Send Peep</p>
+<form action="/update/<%= @peep %>" method="POST" >
+  <p>Message:</p><br>
+  <input type="text" name="message" value="<%= @message %>">
+  <input type="submit" value="Send Peep">
+</form>

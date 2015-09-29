@@ -1,14 +1,23 @@
 <main>
-<div>
-<% @user.peeps.reverse_each do |peep| %>
-   <small>Peep Message:</small>
-   <br><%= peep[:message]%></p>
-  <p>
-    <small>
-      Created: <%= peep[:created_at]%> by: <%= peep[:created_by_name]%><br>
-      <i>username: <%= peep[:created_by]%></i>
-    </small>
-    </p>
-<%end%>
-</div>
+  <div>
+    <% if @user.peeps.empty? %>
+        <p>No links in the system</p>
+    <% else %>
+        <% @user.peeps.reverse_each do |peep| %>
+            <small>Peep Message:</small>
+            <br>
+
+            <p><%= peep[:message] %></p>
+
+            <p>
+              <small>
+                Created: <%= peep[:created_at] %> by: <%= peep[:created_by_name] %><br>
+                <i>username: <%= peep[:created_by] %></i>
+                <a href="/delete/<%= peep[:id] %>">Delete</a>
+                <a href="/update_peep/<%= peep[:id] %>">Update</a>
+              </small>
+            </p>
+        <% end %>
+    <% end %>
+  </div>
 </main>
