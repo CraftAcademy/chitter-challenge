@@ -4,6 +4,7 @@ require 'dm-migrations'
 require 'bcrypt'
 require './lib/user'
 require './lib/peep'
+require 'byebug'
 
 
 class Chitter < Sinatra::Base
@@ -92,21 +93,21 @@ class Chitter < Sinatra::Base
   end
 
   get '/update_peep/:id' do
-    @peep = Peep.get(params[:id]).id
-    @message = Peep.get(params[:id]).message
-    erb :update_peep
+    @peep = Peep.get(params[:id])
+    if !@user.is_creator_of?(@peep)
+      redirect '/'
+    else
+      erb :update_peep
+    end
+
   end
 
-  post '/update_peep' do
-    @updatepeep = Peep.get(params[:id]).message
-    erb :update_peep
-  end
-
-  post '/update/:id' do
+  post '/update_peep/:id' do
     peep = Peep.get(params[:id])
-    peep.update(message: params[:message])
+    peep.update(message: params[:message]) if @user.is_creator_of?(peep)
     redirect '/my_peeps'
   end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0

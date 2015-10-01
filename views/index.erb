@@ -1,14 +1,24 @@
 <main>
-<div>
-<% @peeps.reverse_each do |peep| %>
-   <small>Peep Message:</small>
-   <br><%= peep[:message]%></p>
-  <p>
-    <small>
-      Created: <%= peep[:created_at]%> by: <%= peep[:created_by_name]%><br>
-      <i>username: <%= peep[:created_by]%></i>
-    </small>
-    </p>
-<%end%>
-</div>
+  <div class="row">
+
+    <div class="large-12 columns">
+      <div class="panel">
+        <% @peeps.reverse_each do |peep| %>
+            <div class="row">
+              <div class="large-8 columns">
+                <div class="callout panel">
+                  <%= peep[:message] %></p>
+                  <p>
+                    <small>
+                      Created: <%= peep[:created_at] %> by: <%= peep[:created_by_name] %>
+                      <i>username: <%= peep[:created_by] %></i>
+                    </small>
+                  </p>
+                </div>
+              </div>
+            </div>
+        <% end %>
+
+      </div>
+    </div>
 </main>

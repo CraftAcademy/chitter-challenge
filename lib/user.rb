@@ -38,4 +38,8 @@ class User
         nil
       end
   end
+
+  def is_creator_of?(resourse)
+    resourse.user_id == self.id
+  end
 end

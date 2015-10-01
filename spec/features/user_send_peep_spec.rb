@@ -29,7 +29,6 @@ feature 'Send Peep' do
     fill_in 'message', with: 'Test message'
     click_button 'Send Peep'
     expect(page.current_path).to eq '/'
-    expect(page).to have_content 'Peep Message'
     expect(page).to have_content 'Test message'
   end
 

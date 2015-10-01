@@ -1,53 +1,25 @@
 <head>
 
- <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="/css/foundation.css">
 
   <!-- This is how you would link your custom stylesheet -->
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="/css/custom.css">
 
-  <script src="js/vendor/modernizr.js"></script>
+  <script src="/js/vendor/modernizr.js"></script>
 
 </head>
 
-<nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="/">Chitter</a></h1>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
 
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <%if @user.nil? %>
-      <ul class="right">
-        <li class="active"><a href="/sign_up">Sign Up</a></li>
-        <li class="active"><a href="/sign_in">Sign In</a></li>
-      </ul>
-    <%else%>
-      <ul class="right">
-        <li class="active"><a href="">Signed in as: <%= @user.username%></a></li>
-        <li class="active"><a href="/sign_out">Sign Out</a></li>
-      </ul>
-    <%end%>
-
-    <!-- Left Nav Section -->
-  <%if @user.nil? %>
-    <ul class="left">
-      <li><a href="/send_peep">Send Peep</a></li>
-    </ul>
-  <%else%>
-    <ul class="left">
-      <li><a href="/send_peep">Send Peep</a></li>
-      <li><a href="/my_peeps">My Peeps</a></li>
-    </ul>
-  <%end%>
-  </section>
-</nav>
 
 <body>
 
-  <%= yield %>
+
+<div class="row">
+  <div class="large-12 columns">
+    <%= erb :'/header' %>
+    <%= yield %>
+  </div>
+</div>
+
 
 </body>
