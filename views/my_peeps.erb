@@ -1,23 +1,37 @@
 <main>
-  <div>
-    <% if @user.peeps.empty? %>
-        <p>No links in the system</p>
-    <% else %>
-        <% @user.peeps.reverse_each do |peep| %>
-            <small>Peep Message:</small>
-            <br>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="panel">
+        <% if @user.peeps.empty? %>
+            <div class="row">
+              <div class="large-8 columns">
+                <div class="callout panel">
+                  <p>No links in the system</p>
+                </div>
+              </div>
+            </div>
+        <% else %>
+            <% @user.peeps.reverse_each do |peep| %>
+                <div class="row">
+                  <div class="large-8 columns">
+                    <div class="callout panel">
+                      <p><%= peep[:message] %></p>
 
-            <p><%= peep[:message] %></p>
-
-            <p>
-              <small>
-                Created: <%= peep[:created_at] %> by: <%= peep[:created_by_name] %><br>
-                <i>username: <%= peep[:created_by] %></i>
-                <a href="/delete/<%= peep[:id] %>">Delete</a>
-                <a href="/update_peep/<%= peep[:id] %>">Update</a>
-              </small>
-            </p>
+                      <p>
+                        <small>
+                          <b>Created:</b> <%= peep[:created_at] %> <b>Posted by:</b> <%= peep[:created_by_name] %>
+                          <b>username:</b> <i><%= peep[:created_by] %></i>
+                          <br>
+                        </small>
+                        <a href="/delete/<%= peep[:id] %>">Delete</a>
+                        <a href="/update_peep/<%= peep[:id] %>">Update</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
         <% end %>
-    <% end %>
+      </div>
+    </div>
   </div>
 </main>

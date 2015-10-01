@@ -1,6 +1,5 @@
 <main>
   <div class="row">
-
     <div class="large-12 columns">
       <div class="panel">
         <% @peeps.reverse_each do |peep| %>
@@ -10,15 +9,14 @@
                   <%= peep[:message] %></p>
                   <p>
                     <small>
-                      Created: <%= peep[:created_at] %> by: <%= peep[:created_by_name] %>
-                      <i>username: <%= peep[:created_by] %></i>
+                      <b>Created:</b> <%= peep[:created_at] %> <b>Posted by</b>: <%= peep[:created_by_name] %>
+                      <b>username:</b> <i><%= peep[:created_by] %></i>
                     </small>
                   </p>
                 </div>
               </div>
             </div>
         <% end %>
-
       </div>
     </div>
 </main>
