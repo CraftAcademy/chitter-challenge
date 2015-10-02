@@ -9,28 +9,28 @@
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <%if @user.nil? %>
+    <% if @user.nil? %>
         <ul class="right">
           <li class="active"><a href="/sign_up">Sign Up</a></li>
           <li class="active"><a href="/sign_in">Sign In</a></li>
         </ul>
-    <%else%>
+    <% else %>
         <ul class="right">
-          <li class="active"><a href="">Signed in as: <%= @user.username%></a></li>
+          <li class="active"><a href="">Signed in as: <%= @user.username %></a></li>
           <li class="active"><a href="/sign_out">Sign Out</a></li>
         </ul>
-    <%end%>
+    <% end %>
 
     <!-- Left Nav Section -->
-    <%if @user.nil? %>
+    <% if @user.nil? %>
         <ul class="left">
           <li><a href="/send_peep">Send Peep</a></li>
         </ul>
-    <%else%>
+    <% else %>
         <ul class="left">
           <li><a href="/send_peep">Send Peep</a></li>
           <li><a href="/my_peeps">My Peeps</a></li>
         </ul>
-    <%end%>
+    <% end %>
   </section>
 </nav>

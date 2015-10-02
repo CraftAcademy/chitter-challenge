@@ -1,6 +1,6 @@
 feature 'my peeps' do
 
-  background {visit '/'}
+  background { visit '/' }
 
   scenario 'logged in user can visit my peeps path' do
     create_and_login_user

@@ -1,6 +1,6 @@
 feature 'user peep' do
 
-  background {visit '/'}
+  background { visit '/' }
 
   scenario 'Send Peep path works' do
     visit '/send_peep'

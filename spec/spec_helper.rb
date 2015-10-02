@@ -51,8 +51,8 @@ def create_user2
 end
 
 SimpleCov.formatters = [
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
 ]
 Coveralls.wear!
 
@@ -70,7 +70,7 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-   config.before(:suite) do
+  config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
