@@ -1,0 +1,38 @@
+<main>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="panel">
+        <h4>Your Peep message history:</h4>
+        <% if @user.peeps.empty? %>
+            <div class="row">
+              <div class="large-8 columns">
+                <div class="callout panel">
+                  <p>No links in the system</p>
+                </div>
+              </div>
+            </div>
+        <% else %>
+            <% @user.peeps.reverse_each do |peep| %>
+                <div class="row">
+                  <div class="large-8 columns">
+                    <div class="callout panel">
+                      <p><%= peep[:message] %></p>
+
+                      <p>
+                        <small>
+                          <b>Created:</b> <%= peep[:created_at] %> <b>Posted by:</b> <%= peep[:created_by_name] %>
+                          <b>username:</b> <i><%= peep[:created_by] %></i>
+                          <br>
+                        </small>
+                        <a class="small button" href="/delete/<%= peep[:id] %>">Delete</a>
+                        <a class="small button" href="/update_peep/<%= peep[:id] %>">Update</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel">
+      <div class="row">
+        <div class="large-6 columns">
+          <div class="callout panel">
+            <h4>Update your peep</h4>
+
+            <p>Type in a new message below and press update.</p>
+
+            <form action="/update_peep/<%= @peep.id %>" method="POST">
+              <div class="row">
+                <div class="large-12 columns">
+                  <input type="text" name="message" value="<%= @peep.message %>">
+                  <input type="submit" class="small button" value="Update Peep">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

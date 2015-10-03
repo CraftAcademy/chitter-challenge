@@ -1,22 +1,13 @@
-Chitter Challenge
-=================
+Chitter
+=======
 
-* Challenge time: The weekend and up to 9am Monday morning
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your code by 9am Monday morning
-* Please feel free to submit pull requests early at any time during the weekend to get automated feedback from Hound and test coverage stats from Coveralls
+About
+------
+This is a project made during my time at [Makers Academy Sweden](http://www.makersacademy.se/).
+The challenge was to write a little Twitter clone that will allow the users to post messages to a public stream.
+The "Chitter" application can be found live on the web at [www.chittergr.herokuapp.com](https://chittergr.herokuapp.com/).
 
-Challenge:
--------
-
-As usual please start by 
-
-* Filling out your learning plan self review for the week: https://github.com/MakersSweden/learning_plan_september2015 (if you haven't already)
-* Forking this repo
-
-We are going to write a little Twitter clone that will allow the users to post messages to a public stream.
-
-Features:
+Features / User Stories:
 -------
 
 ```sh
@@ -33,11 +24,11 @@ So that I can avoid others posting messages on Chitter as me
 I want to log out of Chitter
 
 As a maker
-So that I can let people know what I am doing  
+So that I can let people know what I am doing
 I want to post a message (peep) to chitter
 
 As a maker
-So that I can see what others are saying  
+So that I can see what others are saying
 I want to see all peeps in reverse chronological order
 
 As a maker
@@ -48,46 +39,52 @@ I want to see the time at which it was made
 Notes on functionality:
 ------
 
-* Drive the creation of your app using tests - either cucumber or rspec as you prefer
-* Makers sign up to chitter with their email, password, name and a user name (e.g. sam@makersacademy.com, s3cr3t, Samuel Russell Hampden Joseph, tansaku).
-* The username and email are unique.
-* Peeps (posts to chitter) have the name of the maker and their user handle.
-* Use bcrypt to secure the passwords.
-* Use data mapper and postgres to save the data.
-* You don't have to be logged in to see the peeps.
-* You only can peep if you are logged in.
-* Please ensure that you update your README to indicate the technologies used, and give instructions on how to install and run the tests
-* Finally submit a pull request before Monday at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday at 9am
+* You need to sign in as a user before you can post a Peep message in the public stream.
+* Once signed in you can view your own Peep messages and update and delete them.
+* At this moment there is no function for password retrival.
 
-Bonus:
+
+Technologies used
 -----
+* [Sinatra](http://www.sinatrarb.com/) - Web application
+* [PostgreSQL](http://www.postgresql.org/) - Database
+* [Foundation](http://foundation.zurb.com/) - CSS framework
+* [Ruby](https://www.ruby-lang.org/en/) - Interpreted open source programming language
+* [BCrypt](https://en.wikipedia.org/wiki/Bcrypt) - Password encryption
+* [DataMapper](http://datamapper.org/) - A Ruby Object Relational Manager (ORM)
+* [Git](https://git-scm.com/) - Version Control System (VCS)
+* [GitHub](https://github.com/) - A tool for collaborative development using Git
+* [Heroku](https://www.heroku.com/) Platform as a service (PaaS) that enables developers to build and run applications entirely in the cloud.
+* [Capybara](https://github.com/jnicklas/capybara) - Web application test framework
+* [RSpec](http://rspec.info/) - Test driven development (TDD) framework for Ruby
+* [Travis CI](https://travis-ci.org/) - Automated test framework
+* [Coveralls](https://coveralls.io/) - Ensure that all your new code is fully test-covered.
 
-If you have time you can implement the following:
+Ideas on future improvements
+----------------------
+* Add a password retrival function.
+* Add a reply-function.
+* Add search/filtering function.
+* Add a upper limit for number of messages showed on a page in order to maintain page speed.
 
-* In order to start a conversation as a maker I want to reply to a peep from another maker.
+How to get the code and run Tests
+---------------------------------
 
-And/Or:
+1) Clone this repo to your local machine.
+2) Run Bundle install
+3) Run RSpec and Capybara tests in spec folder
 
-* Work on the css to make it look good (we all like beautiful things).
-
-Good luck and let the chitter begin!
+How to run the application on your local machine
+---------------------------------
+1) Follow the steps above.
+2) Start web server using Shotgun or rackup.
+3) Open http://localhost:(webserver port) in your browser.
 
 Notes on test coverage
 ----------------------
+In this project i have been using Travis CI and Coveralls as automated test frameworks. Statistics below:
 
-Please ensure you have the following **AT THE TOP** of your spec_helper.rb in order to have test coverage stats generated
-on your pull request:
 
-```ruby
-require 'coveralls'
-require 'simplecov'
+[![Build Status](https://travis-ci.org/gustafr/chitter-challenge.svg?branch=master)](https://travis-ci.org/gustafr/chitter-challenge)
+[![Coverage Status](https://coveralls.io/repos/gustafr/chitter-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/gustafr/chitter-challenge?branch=master)
 
-SimpleCov.formatters = [
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
-]
-Coveralls.wear! 
-```
-
-Note that you can replace `Coveralls.wear!` with  `SimpleCov.start` to get coverage stats locally
-Then run `open coverage/index.html` from the command line to view details
