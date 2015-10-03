@@ -5,7 +5,6 @@ require 'dm-migrations'
 require 'bcrypt'
 require './lib/user'
 require './lib/peep'
-require 'byebug'
 
 
 class Chitter < Sinatra::Base
