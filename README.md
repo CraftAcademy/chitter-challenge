@@ -92,4 +92,6 @@ Coveralls.wear!
 Note that you can replace `Coveralls.wear!` with  `SimpleCov.start` to get coverage stats locally
 Then run `open coverage/index.html` from the command line to view details
 
+[![Build Status](https://travis-ci.org/gustafr/chitter-challenge.svg?branch=master)](https://travis-ci.org/gustafr/chitter-challenge)
 [![Coverage Status](https://coveralls.io/repos/gustafr/chitter-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/gustafr/chitter-challenge?branch=master)
+
