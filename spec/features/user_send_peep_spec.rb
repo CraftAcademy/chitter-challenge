@@ -16,8 +16,6 @@ feature 'Send Peep' do
     create_and_login_user
     visit '/send_peep'
     expect(page).to have_selector "form[action='/send_peep']"
-    expect(page).to have_selector "input[type='text']"
-    expect(page).to have_selector "input[name='message']"
     expect(page).to have_selector "input[type='submit']"
     expect(page).to have_button "Send Peep"
     expect(page.current_path).to eq '/send_peep'

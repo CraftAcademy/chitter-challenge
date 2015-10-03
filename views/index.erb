@@ -2,21 +2,33 @@
   <div class="row">
     <div class="large-12 columns">
       <div class="panel">
-        <% @peeps.reverse_each do |peep| %>
+        <h4>Most recent Peeps:</h4>
+        <% if @peeps.empty? %>
             <div class="row">
               <div class="large-8 columns">
                 <div class="callout panel">
-                  <%= peep[:message] %></p>
-                  <p>
-                    <small>
-                      <b>Created:</b> <%= peep[:created_at] %> <b>Posted by</b>: <%= peep[:created_by_name] %>
-                      <b>username:</b> <i><%= peep[:created_by] %></i>
-                    </small>
-                  </p>
+                  <p>No links in the system</p>
                 </div>
               </div>
             </div>
+        <% else %>
+            <% @peeps.reverse_each do |peep| %>
+                <div class="row">
+                  <div class="large-8 columns">
+                    <div class="callout panel">
+                      <%= peep[:message] %></p>
+                      <p>
+                        <small>
+                          <b>Created:</b> <%= peep[:created_at] %> <b>Posted by</b>: <%= peep[:created_by_name] %>
+                          <b>username:</b> <i><%= peep[:created_by] %></i>
+                        </small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
         <% end %>
       </div>
     </div>
+  </div>
 </main>

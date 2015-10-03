@@ -6,6 +6,7 @@ gem 'bcrypt'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'pg'
+gem 'sinatra-flash'
 
 group :test do
   gem 'capybara'
@@ -19,5 +20,6 @@ group :test do
   gem 'coveralls', require: false
   gem 'shotgun'
   gem 'database_cleaner', '~> 1.5.0'
+  gem 'rake', '~> 10.4.2'
 end
 

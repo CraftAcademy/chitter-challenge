@@ -15,10 +15,10 @@ class User
   has n, :peeps
 
   validates_presence_of :username, message: "Please fill in username."
-  validates_uniqueness_of :username , message: "Username already exists."
+  validates_uniqueness_of :username, message: "Username already exists."
   validates_presence_of :name, message: "Please fill in name."
   validates_presence_of :email, message: "Please fill in email."
-  validates_uniqueness_of :email , message: "User already exists."
+  validates_uniqueness_of :email, message: "User already exists."
   validates_presence_of :password, message: "Please fill in password."
   validates_presence_of :password_confirmation, message: "Please confirm password."
 
@@ -32,11 +32,11 @@ class User
 
   def self.authenticate(username, password)
     user = first(username: username)
-      if user && BCrypt::Password.new(user.password_digest) == password
-        user
-      else
-        nil
-      end
+    if user && BCrypt::Password.new(user.password_digest) == password
+      user
+    else
+      nil
+    end
   end
 
   def is_creator_of?(resourse)

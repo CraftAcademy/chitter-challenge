@@ -2,6 +2,7 @@
   <div class="row">
     <div class="large-12 columns">
       <div class="panel">
+        <h4>Your Peep message history:</h4>
         <% if @user.peeps.empty? %>
             <div class="row">
               <div class="large-8 columns">
@@ -23,8 +24,8 @@
                           <b>username:</b> <i><%= peep[:created_by] %></i>
                           <br>
                         </small>
-                        <a href="/delete/<%= peep[:id] %>">Delete</a>
-                        <a href="/update_peep/<%= peep[:id] %>">Update</a>
+                        <a class="small button" href="/delete/<%= peep[:id] %>">Delete</a>
+                        <a class="small button" href="/update_peep/<%= peep[:id] %>">Update</a>
                       </p>
                     </div>
                   </div>
