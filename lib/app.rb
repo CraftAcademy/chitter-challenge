@@ -5,8 +5,8 @@ require 'sinatra/flash'
 require 'tilt/erb'
 require 'data_mapper'
 require 'dm-migrations'
-require 'peep'
-require 'users'
+require './lib/peep'
+require './lib/users'
 
 class App < Sinatra::Base
 
@@ -20,6 +20,8 @@ class App < Sinatra::Base
   DataMapper.finalize
   DataMapper.auto_upgrade!
 
+  register Sinatra::Flash
+
   get '/' do
     @peeps = Peep.all(order: [ :created_at.desc ])
     erb :index
@@ -31,6 +33,7 @@ class App < Sinatra::Base
 
   post '/join' do
     if((params[:name] == '') || (params[:email] == '') || (params[:user_name] == '') || (params[:password] == '') || (params[:password_confirm] == ''))
+      flash[:warning] = "You must have missed a field, please try again."
       redirect 'join'
     else
       new_user = User.new
@@ -71,8 +74,26 @@ class App < Sinatra::Base
     end
   end
 
-  get '/peeps' do
-    @peeps = Peep.all(order: [ :created_at.desc ])
-    erb :peeps
+  get '/share_peep' do
+    if session[user_id]== nil
+      flash[:warning] = "Please sign in first!"
+      redirect 'sign_in'
+    else
+      @peeps = Peep.all(order: [ :created_at.desc ])
+      erb :share_peep
+    end
+
   end
+
+  post '/share_peep' do
+    Peep.create(message: params[:message], created_at: Time.now, created_by: @user.username, created_by_name: @user.name, user_id: @user.id)
+    redirect '/'
+  end
+
+  get '/sign_out' do
+    session[:user_id] = nil
+    flash[:notice] = "Thanks for today #{@user.username}. Welcome back!"
+    redirect '/'
+  end
+
 end

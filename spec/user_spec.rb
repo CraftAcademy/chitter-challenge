@@ -43,22 +43,22 @@ describe User do
       visit '/sign_in'
     end
 
-    scenario "Render sign-in form" do
+    scenario "renders sign-in form" do
       expect(page).to have_selector "form[action='/sign_in']"
       expect(page).to have_selector "form[method='post']"
       expect(page).to have_selector "input[name='email']"
       expect(page).to have_selector "input[name='password']"
     end
 
-    scenario 'signs in user with valid credentials' do
+    scenario 'allows user to join with valid credentials' do
       User.create(email: 'bo@cint.com', password: 'password', password_confirm: 'password')
       visit '/sign_in'
       fill_in 'email', with: 'bo@cint.com'
       #save_and_open_page
       fill_in 'password', with: 'password'
       click_button 'Sign In'
-      expect(page.current_path).to eq '/'
-      expect(page).to have_content 'Hullo Bottelotte!'
+      expect(page.current_path).to eq '/sign_in'
+      expect(page).to have_content 'Welcome Bo!'
     end
 
   end
