@@ -3,7 +3,7 @@ feature "Join" do
     visit "join"
   end
 
-  scenario "create Join form" do
+  scenario "creates Join form" do
     expect(page).to have_selector "form[action='/join']"
     expect(page).to have_selector "form[method='post']"
     expect(page).to have_selector "input[name='name']"
@@ -13,7 +13,7 @@ feature "Join" do
     expect(page).to have_selector "input[name='password_confirm']"
   end
 
-  scenario "create a new user with valid inputs" do
+  scenario "creates a new user with valid inputs" do
     expect(User.count).to eq 0
     fill_in "name", with: "Bo"
     fill_in "user_name", with: "bottelotte"

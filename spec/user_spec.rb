@@ -54,13 +54,20 @@ describe User do
       User.create(email: 'bo@cint.com', password: 'password', password_confirm: 'password')
       visit '/sign_in'
       fill_in 'email', with: 'bo@cint.com'
-      #save_and_open_page
       fill_in 'password', with: 'password'
       click_button 'Sign In'
       expect(page.current_path).to eq '/sign_in'
       expect(page).to have_content 'Welcome Bo!'
     end
 
+  end
+
+  feature 'Sign Out' do
+    scenario 'signs users out when they click Sign out button' do
+      User.create(email: 'bo@cint.com', password: 'password')
+      visit '/sign_out'
+      expect(page).to have_content 'Thanks for your visit, see you soon again!'
+    end
   end
 
 end

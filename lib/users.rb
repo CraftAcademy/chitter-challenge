@@ -18,17 +18,13 @@ class User
   validates_presence_of :name
   validates_presence_of :user_name
   validates_presence_of :email
-  # validates_presence_of :password_digest
-  # validates_confirmation_of :password, message: "Sorry, your passwords don't match"
 
-  #has n, :tags, through: Resource
   has n, :peeps, through: Resource
 
   before :save do
     if self.password == self.password_confirm
       self.password_digest = BCrypt::Password.create(self.password)
     else
-      #break
     end
   end
 

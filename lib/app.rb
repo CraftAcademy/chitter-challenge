@@ -53,13 +53,11 @@ class App < Sinatra::Base
 
   post '/sign_in' do
     if((params[:email] == '') || (params[:password] == ''))
-      flash[:warning] = "You submitted invalid data.  Please try again."
+      flash[:warning] = "You must have missed a field.  Please try again."
       redirect '/sign_in'
+
     else
-      # I'm not sure about this "begin / rescue" business.
-      # Got it from Thomas and need to learn more about it.
-      # https://github.com/tochman/my_app/blob/master/lib/my_app.rb#L76
-      # Leaving it here as a reminder and question.
+
       begin
         email = params[:email]
         password = params[:password]
@@ -68,7 +66,7 @@ class App < Sinatra::Base
         flash[:notice] = "Welcome #{@user.name}!"
         redirect '/'
         rescue
-          flash[:warning] = "You submitted invalid data.  Please try again."
+          flash[:warning] = "Some data is invalid.  Please try again."
           redirect "/sign_in"
       end
     end
@@ -90,9 +88,10 @@ class App < Sinatra::Base
     redirect '/'
   end
 
+  #Doesn´t work, needs some fixing as well
   get '/sign_out' do
     session[:user_id] = nil
-    flash[:notice] = "Thanks for today #{@user.username}. Welcome back!"
+    flash[:notice] = "Thanks for your visit, see you soon again!!"
     redirect '/'
   end
 

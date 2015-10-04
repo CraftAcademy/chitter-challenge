@@ -44,10 +44,19 @@
       </section>
     </nav>
 
+    <% if flash %>
+        <% flash.each do |name, msg| %>
+            <div id="flash-container" data-alert class="alert-box <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+              <%= msg %>
+              <a href="#" class="close">&times;</a>
+            </div>
+        <% end %>
+    <% end %>
 
     <br>
     <%= yield %>
     <br>
+
 
   </div>
   <div class="small-1 small-centered columns"></div>
