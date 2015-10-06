@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--[if IE 9]>
+<html class="lt-ie10" lang="en">
+<![endif]-->
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHITTER</title>
+  <!-- normalize.css and modernizr.js help with browser compatibility -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/foundation.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+<div class="row">
+  <div class="small-1 small-centered columns"></div>
+  <div class="small-10 small-centered columns">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">CHITTER</a></h1>
+        </li>
+        <li class="has-form">
+          <div class="row collapse">
+          </div>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li><a href="/join">Join</a></li>
+          <li><a href="/sign_in">Sign In</a></li>
+          <li><a href="/sign_out">Sign Out</a></li>
+          </li>
+        </ul>
+        <!-- Left Nav Section -->
+        <ul class="left">
+        </ul>
+      </section>
+    </nav>
+    <!-- Flash Section -->
+
+    <!-- Yield Section -->
+    <br>
+    <h2 align="center">Sign In</h2>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <div class="signup-panel">
+      <form action="/sign_in" method="post">
+        Email:<input type="text" name="email"><br>
+        Password:<input type="password" name="password"><br>
+        <button class="button round button success button expand" type="submit" formmethod="post" formaction="/sign_in">Sign In</button>
+      </form>
+      <p>Don't have an account yet?<a href="/sign_up">&nbsp;Sign up here &raquo</a></p>
+    </div>
+  </div>
+</div>
+    <br>
+    <!-- Footer Section -->
+  </div>
+  <div class="small-1 small-centered columns"></div>
+</div>
+<div class="row">
+  <div class="small-1 small-centered columns"></div>
+  <div class="small-10 small-centered columns">
+    <footer class="footer">
+      <div class="row">
+        <div class="small-12 columns">
+          <p class="slogan">Beats Twitter every day!</p>
+          <p class="links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div class="small-1 small-centered columns"></div>
+</div>
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/foundation.min.js"></script>
+<script>
+  $(document).foundation();
+</script>
+</body>
+</html>
