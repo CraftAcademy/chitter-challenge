@@ -1,4 +1,3 @@
-
 require 'sinatra/base'
 require 'sinatra/flash'
 #require 'byebug'
@@ -10,7 +9,7 @@ require './lib/users'
 
 class App < Sinatra::Base
 
-  set :views, proc {File.join(root, '..', 'views')}
+  set :views, proc { File.join(root, '..', 'views') }
   enable :sessions
   set :session_secret, '123321123'
   use Rack::Session::Pool
@@ -23,7 +22,7 @@ class App < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    @peeps = Peep.all(order: [ :created_at.desc ])
+    @peeps = Peep.all(order: [:created_at.desc])
     erb :index
   end
 
@@ -32,7 +31,7 @@ class App < Sinatra::Base
   end
 
   post '/join' do
-    if((params[:name] == '') || (params[:email] == '') || (params[:user_name] == '') || (params[:password] == '') || (params[:password_confirm] == ''))
+    if ((params[:name] == '') || (params[:email] == '') || (params[:user_name] == '') || (params[:password] == '') || (params[:password_confirm] == ''))
       flash[:warning] = "You must have missed a field, please try again."
       redirect 'join'
     else
@@ -52,7 +51,7 @@ class App < Sinatra::Base
   end
 
   post '/sign_in' do
-    if((params[:email] == '') || (params[:password] == ''))
+    if ((params[:email] == '') || (params[:password] == ''))
       flash[:warning] = "You must have missed a field.  Please try again."
       redirect '/sign_in'
 
@@ -65,19 +64,21 @@ class App < Sinatra::Base
         session[:user_id] = @user.id
         flash[:notice] = "Welcome #{@user.name}!"
         redirect '/'
-        rescue
-          flash[:warning] = "Some data is invalid.  Please try again."
-          redirect "/sign_in"
+      rescue
+        flash[:warning] = "Some data is invalid.  Please try again."
+        redirect "/sign_in"
       end
     end
   end
+
+
 
   get '/share_peep' do
     if session[user_id]== nil
       flash[:warning] = "Please sign in first!"
       redirect 'sign_in'
     else
-      @peeps = Peep.all(order: [ :created_at.desc ])
+      @peeps = Peep.all(order: [:created_at.desc])
       erb :share_peep
     end
 

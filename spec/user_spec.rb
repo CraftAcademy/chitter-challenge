@@ -37,7 +37,7 @@ describe User do
       expect(User.authenticate('bo@cint.com', 'other-password')).to eq nil
     end
   end
-
+  
   feature 'Sign In' do
     before do
       visit '/sign_in'
@@ -50,13 +50,14 @@ describe User do
       expect(page).to have_selector "input[name='password']"
     end
 
+
     scenario 'allows user to join with valid credentials' do
-      User.create(email: 'bo@cint.com', password: 'password', password_confirm: 'password')
+      User.create(name: 'Bo', user_name: 'bottelotte', email: 'bo@cint.com', password: 'password', password_confirm: 'password')
       visit '/sign_in'
       fill_in 'email', with: 'bo@cint.com'
       fill_in 'password', with: 'password'
       click_button 'Sign In'
-      expect(page.current_path).to eq '/sign_in'
+      expect(page.current_path).to eq '/'
       expect(page).to have_content 'Welcome Bo!'
     end
 
