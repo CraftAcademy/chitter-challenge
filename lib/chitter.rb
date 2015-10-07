@@ -1,4 +1,4 @@
-# chitter.rb
+#chitter.rb
 
 require 'sinatra/base'
 # require 'byebug'
@@ -20,7 +20,6 @@ class Chitter < Sinatra::Base
   DataMapper.finalize
   #DataMapper.auto_migrate!
   DataMapper.auto_upgrade!
-  #byebug
 
   get '/' do
     erb :index
