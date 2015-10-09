@@ -1,3 +1,6 @@
+#User.rb
+
+require 'data_mapper'
 
 class User
 
