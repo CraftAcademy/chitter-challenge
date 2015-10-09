@@ -7,6 +7,8 @@ gem 'dm-postgres-adapter'
 gem 'data_mapper'
 gem 'pg'
 
+
+
 group :development, :test do
   gem 'rspec'
   gem 'capybara'
@@ -15,5 +17,6 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'database_cleaner'
   gem 'shotgun'
+  gem 'dm-rspec'
 end
 
