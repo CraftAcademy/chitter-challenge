@@ -25,7 +25,3 @@ class ChitterApp < Sinatra::Base
      "Hello, World!"
    end
 end
-
-
-#DataMapper.setup(:default, 'postgres::memory:')
-#DataMapper.setup(:default, 'postgres://user:password@hostname/database')
