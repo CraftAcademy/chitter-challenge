@@ -14,12 +14,11 @@ class ChitterApp < Sinatra::Base
   set :session_secret, '1234567890'
   use Rack::Session::Pool
   env = ENV['RACK_ENV'] || "development"
-
   DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/chitter_#{env}")
+
   DataMapper.finalize
   DataMapper.auto_upgrade!
   DataMapper::Model.raise_on_save_failure = true
-
 
   get '/' do
     "Hello, World!"
