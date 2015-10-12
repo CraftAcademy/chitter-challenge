@@ -21,7 +21,7 @@ class ChitterApp < Sinatra::Base
   DataMapper::Model.raise_on_save_failure = true
 
 
-   get '/' do
-     "Hello, World!"
-   end
+  get '/' do
+    "Hello, World!"
+  end
 end

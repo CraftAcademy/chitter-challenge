@@ -12,7 +12,8 @@ describe User do
   it { is_expected.to validate_length_of(:name). maximum(60) }
   it { is_expected.to validate_presence_of :username}
   it { is_expected.to validate_length_of(:username). maximum(30) }
-
+  it { is_expected.to validate_presence_of :email}
+  it { is_expected.to validate_format_of(:email).with(:email_address) }
 
 end
 
