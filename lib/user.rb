@@ -17,3 +17,6 @@ class User
   property :password_digest, Text
 
 end
+
+
+
