@@ -16,6 +16,9 @@ class User
   property :email, String
   property :password_digest, Text
 
+  validates_presence_of :name
+  
+
 end
 
 
