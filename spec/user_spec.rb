@@ -8,6 +8,7 @@ describe User do
   it { is_expected.to have_property :username }
   it { is_expected.to have_property :email }
   it { is_expected.to have_property :password_digest }
+
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_length_of(:name). maximum(60) }
   it { is_expected.to validate_presence_of :username}
@@ -18,11 +19,14 @@ describe User do
 
 end
 
- #describe "Password encryption" do
-  # it "Encrypts password" do
-   # user = User.create(name: "David", username: "david", email: "david@david.com", password: "1234", password_confirm: "1234")
-    #expect(user.password_digest.class).to eq Bcrypt::Password
 
-   #end
+ describe "Password encrypt" do
+
+    it "Encrypts password" do
+      user = User.create(name: "David", username: "david", email: "david@david.com", password: "1234", password_confirm: "1234")
+      expect(user.password_digest.class).to eq Bcrypt::Password
+    end
+end
+
 
 # end
