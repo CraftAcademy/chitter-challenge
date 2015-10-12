@@ -9,6 +9,7 @@ describe User do
   it { is_expected.to have_property :email }
   it { is_expected.to have_property :password_digest }
   it { is_expected.to validate_presence_of :name }
+  it { is_expected.to validate_length_of(:name). maximum(60) }
 
 end
 

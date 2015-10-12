@@ -11,13 +11,13 @@ class User
   include BCrypt
 
   property :id, Serial
-  property :name, String
+  property :name, String, length: 300
   property :username, String
   property :email, String
   property :password_digest, Text
 
   validates_presence_of :name
-  
+  validates_length_of :name, maximum: 60
 
 end
 
