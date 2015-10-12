@@ -10,6 +10,9 @@ describe User do
   it { is_expected.to have_property :password_digest }
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_length_of(:name). maximum(60) }
+  it { is_expected.to validate_presence_of :username}
+  it { is_expected.to validate_length_of(:username). maximum(30) }
+
 
 end
 
