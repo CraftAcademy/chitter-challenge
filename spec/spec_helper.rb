@@ -7,8 +7,8 @@ require 'simplecov'
 require 'dm-rspec'
 
 SimpleCov.formatters = [
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
 ]
 Coveralls.wear!
 

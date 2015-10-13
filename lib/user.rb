@@ -4,12 +4,9 @@ require 'bcrypt'
 require 'data_mapper'
 
 class User
-
-  attr_accessor :password, :password_confirm,
-
+  attr_accessor :password, :password_confirm
 
   include DataMapper::Resource
-  include BCrypt
 
   property :id, Serial
   property :name, String, length: 300
@@ -25,15 +22,13 @@ class User
   validates_presence_of :email
   #validates_uniqueness_of :email
 
-  before :save do
-    if self.password == self.password_confirm
-      self.password_digest = BCrypt::Password.create(self.password)
-    else
-      break
-    end
-  end
-
-
+  #before :save do
+   # if self.password == self.password_confirm
+    #  self.password_digest = BCrypt::Password.create(self.password)
+    #else
+     # break
+    #end
+  #end
 end
 
 
