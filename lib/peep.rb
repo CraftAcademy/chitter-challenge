@@ -9,9 +9,9 @@ class Peep
   property :body, Text
   property :created_at, DateTime
 
-  validates_presence_of :body
+  belongs_to :user
+
+  validates_presence_of :body, body: "please be awesome, and fill in"
   validates_length_of :body, :maximum => 200
-
-
 
 end
