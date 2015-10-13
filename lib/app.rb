@@ -3,9 +3,10 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'data_mapper'
-#require 'dm-migrations'
+require 'dm-migrations'
 require './lib/user.rb'
 require './lib/peep.rb'
+require 'bcrypt'
 
 class ChitterApp < Sinatra::Base
 

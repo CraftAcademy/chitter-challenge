@@ -5,6 +5,7 @@ require File.join(File.dirname(__FILE__), '..', 'lib/app.rb')
 require 'coveralls'
 require 'simplecov'
 require 'dm-rspec'
+require 'pry'
 
 SimpleCov.formatters = [
     SimpleCov::Formatter::HTMLFormatter,
