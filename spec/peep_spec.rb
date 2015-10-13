@@ -10,4 +10,5 @@ describe Peep do
   it { is_expected.to validate_presence_of :body }
   it { is_expected.to have_property :created_at }
 
+
 end

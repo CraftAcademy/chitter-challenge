@@ -7,6 +7,7 @@ require 'dm-migrations'
 require './lib/user.rb'
 require './lib/peep.rb'
 require 'bcrypt'
+require 'database_cleaner'
 
 class ChitterApp < Sinatra::Base
 
@@ -22,7 +23,11 @@ class ChitterApp < Sinatra::Base
   DataMapper.auto_upgrade!
   DataMapper::Model.raise_on_save_failure = true
 
+
+
   get '/' do
-    "Hello, World!"
+    "Hello, Bro!"
   end
 end
+
+

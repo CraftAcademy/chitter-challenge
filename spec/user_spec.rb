@@ -1,6 +1,6 @@
 require './lib/user.rb'
 require 'bcrypt'
-
+require 'database_cleaner'
 
 describe User do
 
@@ -23,7 +23,7 @@ describe User do
   describe "Password encryption" do
 
     it "Encrypts password" do
-      binding.pry
+      DatabaseCleaner.clean
       user = User.create(name: "David", username: "david", email: "david@david.com", password: "1234", password_confirm: "1234")
       expect(user.password_digest.class).to eq Bcrypt::Password
       expect(user.password_digest.version).to eq '2a' #password.version => "2a" "http://bcrypt-ruby.rubyforge.org/"

@@ -1,5 +1,5 @@
 #User.rb
-
+require 'database_cleaner'
 require 'bcrypt'
 
 class User
@@ -14,6 +14,7 @@ class User
   property :email, String, format: :email_address, unique: true, message: "Try again! E-mail is already taken!"
   property :password_digest, Text, length: 300
 
+  has n, :peep
 
   validates_presence_of :name
   validates_length_of :name, maximum: 60
@@ -23,11 +24,11 @@ class User
   #validates_uniqueness_of :email
 
   before :save do
-      if self.password == self.password_confirm
-         self.password_digest = BCrypt::Password.create(self.password)
-      else
-        break
-      end
+    if self.password == self.password_confirm
+      self.password_digest = BCrypt::Password.create(self.password)
+    else
+      break
+    end
   end
 end
 

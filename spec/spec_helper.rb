@@ -6,6 +6,7 @@ require 'coveralls'
 require 'simplecov'
 require 'dm-rspec'
 require 'pry'
+require 'database_cleaner'
 
 SimpleCov.formatters = [
     SimpleCov::Formatter::HTMLFormatter,
@@ -16,3 +17,4 @@ Coveralls.wear!
 RSpec.configure do |config|
   config.include(DataMapper::Matchers)
 end
+
