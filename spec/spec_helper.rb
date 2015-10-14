@@ -3,6 +3,8 @@ ENV['RACK_ENV'] = 'test'
 require File.join(File.dirname(__FILE__), '..', 'lib/app.rb')
 
 require 'coveralls'
+require 'capybara'
+require 'capybara/rspec'
 require 'simplecov'
 require 'dm-rspec'
 require 'pry'
@@ -15,7 +17,10 @@ SimpleCov.formatters = [
 ]
 Coveralls.wear!
 
+Capybara.app = ChitterApp
+
 RSpec.configure do |config|
+  config.include(Capybara::DSL)
   config.include(DataMapper::Matchers)
 
   config.before(:suite) do

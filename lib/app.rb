@@ -28,6 +28,24 @@ class ChitterApp < Sinatra::Base
   get '/' do
     "Hello, Bro!"
   end
+
+  get '/signup' do
+    erb :signup
+  end
+
+  post '/register' do
+    #binding.pry
+    @user = User.create(name: params[:name],
+                        email: params[:email],
+                        username: params[:username],
+                        password: params[:password],
+                        password_confirm: params[:password_confirm])
+    redirect '/'
+  end
+
+  get '/signin' do
+    erb :signin
+  end
 end
 
 
