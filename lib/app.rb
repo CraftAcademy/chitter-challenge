@@ -23,7 +23,27 @@ class ChitterApp < Sinatra::Base
   DataMapper.auto_upgrade!
   DataMapper::Model.raise_on_save_failure = true
 
+  before do
+    @user = User.get(session[:user_id]) unless is_user?
+  end
 
+  register do
+    def auth (type)
+      condition do
+        redirect '/signin' unless send("is_#{type}?")
+      end
+    end
+  end
+
+  helpers do
+    def is_user?
+      @user != nil
+    end
+
+    def current_user
+      @user
+    end
+  end
 
   get '/' do
     "Hello, Bro!"
@@ -50,7 +70,9 @@ class ChitterApp < Sinatra::Base
   post '/signin' do
     #binding.pry
     @user =  User.authenticate(params[:email], params[:password])
+    flash[:notice] = "Welcome #{@user.email}!"
     redirect '/'
+
   end
 
 

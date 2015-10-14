@@ -11,6 +11,8 @@ require 'pry'
 require 'database_cleaner'
 require 'bcrypt'
 
+
+
 SimpleCov.formatters = [
     SimpleCov::Formatter::HTMLFormatter,
     Coveralls::SimpleCov::Formatter
