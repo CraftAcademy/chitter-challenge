@@ -15,6 +15,7 @@ feature 'Chitter app' do
     end
 
     scenario 'can sign-in' do
+      #binding.pry
       user = User.create(name: 'David',
                          email: 'david@david.com',
                          username: 'davidh',
@@ -24,7 +25,7 @@ feature 'Chitter app' do
       fill_in 'email', with: user.email
       fill_in 'password', with: 'password'
       click_button 'Submit'
-      expect(page.current_path).to eq '/signin'
+      expect(page.current_path).to eq '/'
 
     end
 
@@ -37,10 +38,16 @@ feature 'Chitter app' do
       visit '/signout'
       click_button 'Submit'
       expect(page.current_path).to eq '/signout'
-
     end
 
 
   end
 
+  #feature 'sending peeps' do
+
+   # scenario 'user can send a peep' do
+
+
+    #end
+  #end
 end

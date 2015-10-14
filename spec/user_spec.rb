@@ -31,4 +31,28 @@ describe User do
     end
 
   end
+
+  describe "Authentication" do
+
+    before do
+      @user = User.create(name: "David",
+                          username: "david",
+                          email: "david@david.com",
+                          password: "1234",
+                          password_confirm: "1234")
+    end
+
+    it 'Authenticates with valid password' do
+      expect(User.authenticate("david@david.com", "1234")).to eq @user
+    end
+
+    it 'Rejects authentication with wrong credentials - password' do
+      expect(User.authenticate("david@david.com", "wrong_password")).to_not eq @user
+    end
+
+    it 'Rejects authentication with wrong credentials - email' do
+      expect(User.authenticate("david@wrong.com", "1234")).to_not eq @user
+    end
+
+  end
 end

@@ -47,9 +47,22 @@ class ChitterApp < Sinatra::Base
     erb :signin
   end
 
+  post '/signin' do
+    #binding.pry
+    @user =  User.authenticate(params[:email], params[:password])
+    redirect '/'
+  end
+
+
   get '/signout' do
     erb :signout
   end
-end
 
+
+ # get '/send_peep' do
+  #  erb :send_peep
+ #end
+
+
+end
 
