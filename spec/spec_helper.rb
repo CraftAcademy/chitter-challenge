@@ -7,6 +7,7 @@ require 'simplecov'
 require 'dm-rspec'
 require 'pry'
 require 'database_cleaner'
+require 'bcrypt'
 
 SimpleCov.formatters = [
     SimpleCov::Formatter::HTMLFormatter,
@@ -29,6 +30,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
 
 end
 

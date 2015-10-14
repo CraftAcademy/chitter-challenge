@@ -1,5 +1,5 @@
 require './lib/user.rb'
-require 'bcrypt'
+#require 'bcrypt'
 
 
 describe User do
@@ -25,7 +25,7 @@ describe User do
     it "Encrypts password" do
       #binding.pry
       user = User.create(name: "David", username: "david", email: "david@david.com", password: "1234", password_confirm: "1234")
-      expect(user.password_digest.class).to eq Bcrypt::Password
+      expect(user.password_digest.class).to eq BCrypt::Password
       expect(user.password_digest.version).to eq '2a' #password.version => "2a" "http://bcrypt-ruby.rubyforge.org/"
 
     end
