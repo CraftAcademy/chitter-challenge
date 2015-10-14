@@ -28,6 +28,18 @@ feature 'Chitter app' do
 
     end
 
+    scenario 'can sign-out' do
+      user = User.create(name: 'David',
+                         email: 'david@david.com',
+                         username: 'davidh',
+                         password: 'password',
+                         password_confirm: 'password')
+      visit '/signout'
+      click_button 'Submit'
+      expect(page.current_path).to eq '/signout'
+
+    end
+
 
   end
 

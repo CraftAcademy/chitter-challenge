@@ -46,6 +46,10 @@ class ChitterApp < Sinatra::Base
   get '/signin' do
     erb :signin
   end
+
+  get '/signout' do
+    erb :signout
+  end
 end
 
 
