@@ -43,11 +43,12 @@ feature 'Chitter app' do
 
   end
 
-  #feature 'sending peeps' do
+  feature 'sending peeps' do
 
-   # scenario 'user can send a peep' do
-
-
-    #end
-  #end
+    scenario 'user can send a peep' do
+      user = create_user
+      sign_in(user)
+      expect(page.current_path).to eq '/'
+    end
+  end
 end
