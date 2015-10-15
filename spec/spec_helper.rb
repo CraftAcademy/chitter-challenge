@@ -10,6 +10,7 @@ require 'dm-rspec'
 require 'pry'
 require 'database_cleaner'
 require 'bcrypt'
+require 'spec_support'
 
 
 
@@ -24,6 +25,7 @@ Capybara.app = ChitterApp
 RSpec.configure do |config|
   config.include(Capybara::DSL)
   config.include(DataMapper::Matchers)
+  #config.include(Helpers)
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

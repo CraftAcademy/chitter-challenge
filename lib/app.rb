@@ -9,6 +9,8 @@ require './lib/peep.rb'
 require 'bcrypt'
 require 'database_cleaner'
 
+
+
 class ChitterApp < Sinatra::Base
 
   set :views, proc { File.join(root, '..', 'views') }
@@ -35,7 +37,7 @@ class ChitterApp < Sinatra::Base
     end
   end
 
-  helpers do
+  module Helpers
     def is_user?
       @user != nil
     end
@@ -45,8 +47,10 @@ class ChitterApp < Sinatra::Base
     end
   end
 
+  helpers Helpers
+
   get '/' do
-    "Hello, Bro!"
+    erb :index
   end
 
   get '/signup' do
@@ -70,6 +74,7 @@ class ChitterApp < Sinatra::Base
   post '/signin' do
     #binding.pry
     @user =  User.authenticate(params[:email], params[:password])
+    session[:user_id] = @user.id
     flash[:notice] = "Welcome #{@user.email}!"
     redirect '/'
 

@@ -1,3 +1,6 @@
+
+
+
 feature 'Chitter app' do
 
   feature 'user management' do
@@ -15,29 +18,26 @@ feature 'Chitter app' do
     end
 
     scenario 'can sign-in' do
-      #binding.pry
-      user = User.create(name: 'David',
-                         email: 'david@david.com',
-                         username: 'davidh',
-                         password: 'password',
-                         password_confirm: 'password')
+      user = create_user
       visit '/signin'
       fill_in 'email', with: user.email
       fill_in 'password', with: 'password'
       click_button 'Submit'
       expect(page.current_path).to eq '/'
+      expect(page).to have_text 'davidh'
 
     end
 
+
+
     scenario 'can sign-out' do
-      user = User.create(name: 'David',
-                         email: 'david@david.com',
-                         username: 'davidh',
-                         password: 'password',
-                         password_confirm: 'password')
+      user = create_user
+      sign_in(user)
+      expect(page.current_path).to eq '/'
       visit '/signout'
       click_button 'Submit'
       expect(page.current_path).to eq '/signout'
+     # expect(@user).to be nil
     end
 
 
