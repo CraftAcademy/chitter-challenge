@@ -25,7 +25,6 @@ feature 'Chitter app' do
       click_button 'Submit'
       expect(page.current_path).to eq '/'
       expect(page).to have_text 'davidh'
-
     end
 
 
@@ -37,7 +36,7 @@ feature 'Chitter app' do
       visit '/signout'
       click_button 'Submit'
       expect(page.current_path).to eq '/signout'
-     # expect(@user).to be nil
+      expect(@user).to be nil
     end
 
 

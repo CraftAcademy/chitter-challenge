@@ -18,5 +18,8 @@ group :development, :test do
   gem 'shotgun'
   gem 'dm-rspec'
   gem 'pry'
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'guard-rails', require: false
 end
 
